@@ -1,0 +1,37 @@
+<p>
+  <b>Nome:</b>
+  <%=h @conta.nome %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%=h @conta.descricao %>
+</p>
+
+<h2>Saldo atual: <%=h @conta.saldo %></h2>
+
+<%= link_to 'Edit', edit_conta_path(@conta) %> |
+<%= link_to 'Back', contas_path %>
+
+<h2>Movimentos</h2>
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th>Dia</th>
+    <th>Descricao</th>
+    <th>Valor</th>
+  </tr>
+
+<% @conta.movimentos.each do |movimento| %>
+  <tr>
+    <td><%=h movimento.tipo.nome %></td>
+    <td><%=h movimento.dia %></td>
+    <td><%=h movimento.descricao %></td>
+    <td><%=h movimento.valor %></td>
+    <td><%= link_to 'Edit', edit_movimento_path(movimento) %></td>
+    <td><%= link_to 'Destroy', movimento, :confirm => 'Are you sure?', :method => :delete_movimento %></td>
+  </tr>
+<% end %>
+</table>
+
+<p><%= link_to 'Adicionar Movimento', new_movimento_path({ :conta_id => @conta.id }) %></p>

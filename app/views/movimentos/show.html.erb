@@ -1,0 +1,28 @@
+<p>
+  <b>Conta:</b>
+  <%=h @movimento.conta_id %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%=h @movimento.tipo_id %>
+</p>
+
+<p>
+  <b>Dia:</b>
+  <%=h @movimento.dia %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%=h @movimento.descricao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%=h @movimento.valor %>
+</p>
+
+
+<%= link_to 'Edit', edit_movimento_path(@movimento) %> |
+<%= link_to 'Back', movimentos_path %>

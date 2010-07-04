@@ -1,0 +1,155 @@
+
+
+Processing ContasController#index (for ::1 at 2010-07-04 19:16:29) [GET]
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 1ms (View: 1, DB: 0) | 401 Unauthorized [http://financeiro.localhost/contas]
+
+
+Processing ContasController#index (for ::1 at 2010-07-04 19:16:41) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: contas: SELECT * FROM "contas" ):
+  app/controllers/contas_controller.rb:5:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing MovimentosController#index (for ::1 at 2010-07-04 19:16:58) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: movimentos: SELECT * FROM "movimentos" ):
+  app/controllers/movimentos_controller.rb:17:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PagamentosController#index (for ::1 at 2010-07-04 19:17:06) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: pagamentos: SELECT * FROM "pagamentos" ):
+  app/controllers/pagamentos_controller.rb:5:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TiposController#index (for ::1 at 2010-07-04 19:18:36) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: tipos: SELECT * FROM "tipos" ):
+  app/controllers/tipos_controller.rb:5:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TiposController#index (for ::1 at 2010-07-04 19:22:00) [GET]
+
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such table: tipos: SELECT * FROM "tipos" ):
+  app/controllers/tipos_controller.rb:5:in `index'
+  passenger (2.2.15) lib/phusion_passenger/rack/request_handler.rb:92:in `process_request'
+  passenger (2.2.15) lib/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:441:in `start_request_handler'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:381:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/utils.rb:252:in `safe_fork'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:377:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:163:in `start'
+  passenger (2.2.15) lib/phusion_passenger/railz/application_spawner.rb:222:in `start'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:126:in `lookup_or_add'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:247:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:80:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rails_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:145:in `spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/spawn_manager.rb:278:in `handle_spawn_application'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `__send__'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:352:in `main_loop'
+  passenger (2.2.15) lib/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+
+Rendering rescues/layout (internal_server_error)
