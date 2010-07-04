@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  conta_id: 1
+  tipo_id: 1
+  dia: 2010-07-04
+  descricao: MyText
+  valor: 9.99
+
+two:
+  conta_id: 1
+  tipo_id: 1
+  dia: 2010-07-04
+  descricao: MyText
+  valor: 9.99

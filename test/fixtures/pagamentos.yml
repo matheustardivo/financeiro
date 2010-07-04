@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nome: MyText
+  descricao: MyText
+  vencimento: 2010-07-04
+  valor: 9.99
+  confirmado: false
+
+two:
+  nome: MyText
+  descricao: MyText
+  vencimento: 2010-07-04
+  valor: 9.99
+  confirmado: false

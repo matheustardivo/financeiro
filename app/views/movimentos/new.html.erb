@@ -1,0 +1,31 @@
+<h1>New movimento</h1>
+
+<% form_for(@movimento) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :conta_id %><br />
+    <%= collection_select(:movimento, :conta_id, Conta.all, :id, :nome) %>
+  </p>
+  <p>
+    <%= f.label :tipo_id %><br />
+    <%= collection_select(:movimento, :tipo_id, Tipo.all, :id, :nome) %>
+  </p>
+  <p>
+    <%= f.label :dia %><br />
+    <%= f.date_select :dia %>
+  </p>
+  <p>
+    <%= f.label :descricao %><br />
+    <%= f.text_area :descricao %>
+  </p>
+  <p>
+    <%= f.label :valor %><br />
+    <%= f.text_field :valor %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', movimentos_path %>

@@ -1,0 +1,43 @@
+<h1>Listing pagamentos</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Descricao</th>
+    <th>Vencimento</th>
+    <th>Valor</th>
+    <th>Confirmado</th>
+  </tr>
+
+<% @pagamentos.each do |pagamento| %>
+  <tr>
+    <td><%=h pagamento.nome %></td>
+    <td><%=h pagamento.descricao %></td>
+    <td><%=h pagamento.vencimento %></td>
+    <td><%=h pagamento.valor %></td>
+    <td><%=h pagamento.confirmado %></td>
+    <td><%= link_to 'Show', pagamento %></td>
+    <td><%= link_to 'Edit', edit_pagamento_path(pagamento) %></td>
+    <td><%= link_to 'Destroy', pagamento, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%
+	valor_confirmado = 0
+	valor_pendente = 0
+	Pagamento.all.each do |pagamento|
+		if pagamento.confirmado
+			valor_confirmado += pagamento.valor
+		else
+			valor_pendente += pagamento.valor
+		end
+	end
+%>
+
+<h2>Valor Confirmado: <%=h valor_confirmado %></h2>
+<h2>Valor Pendente: <%=h valor_pendente %></h2>
+
+<%= link_to 'New pagamento', new_pagamento_path %>
