@@ -4,7 +4,8 @@ class MovimentosController < ApplicationController
 
     respond_to do |format|
       if @movimento.save
-        format.html { redirect_to(@movimento, :notice => 'Movimento was successfully created.') }
+        flash[:notice] = 'Movimento was successfully created.'
+        format.html { redirect_to(@movimento) }
         format.xml  { render :xml => @movimento, :status => :created, :location => @movimento }
       else
         format.html { render :action => "new" }
@@ -26,7 +27,8 @@ class MovimentosController < ApplicationController
 
     respond_to do |format|
       if @movimento.update_attributes(params[:movimento])
-        format.html { redirect_to(@movimento, :notice => 'Movimento was successfully updated.') }
+        flash[:notice] = 'Movimento was successfully updated.'
+        format.html { redirect_to(@movimento) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -44,7 +44,8 @@ class ContasController < ApplicationController
 
     respond_to do |format|
       if @conta.save
-        format.html { redirect_to(@conta, :notice => 'Conta was successfully created.') }
+        flash[:notice] = 'Conta was successfully created.'
+        format.html { redirect_to(@conta) }
         format.xml  { render :xml => @conta, :status => :created, :location => @conta }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,8 @@ class ContasController < ApplicationController
 
     respond_to do |format|
       if @conta.update_attributes(params[:conta])
-        format.html { redirect_to(@conta, :notice => 'Conta was successfully updated.') }
+        flash[:notice] = 'Conta was successfully updated.'
+        format.html { redirect_to(@conta) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
