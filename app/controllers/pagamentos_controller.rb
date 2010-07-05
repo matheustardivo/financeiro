@@ -44,7 +44,8 @@ class PagamentosController < ApplicationController
 
     respond_to do |format|
       if @pagamento.save
-        format.html { redirect_to(@pagamento, :notice => 'Pagamento was successfully created.') }
+        flash[:notice] = 'Pagamento was successfully created.'
+        format.html { redirect_to(@pagamento) }
         format.xml  { render :xml => @pagamento, :status => :created, :location => @pagamento }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,8 @@ class PagamentosController < ApplicationController
 
     respond_to do |format|
       if @pagamento.update_attributes(params[:pagamento])
-        format.html { redirect_to(@pagamento, :notice => 'Pagamento was successfully updated.') }
+        flash[:notice] = 'Pagamento was successfully updated.'
+        format.html { redirect_to(@pagamento) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
