@@ -5246,3 +5246,32 @@ Rendering contas/index
   [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "tipos" WHERE ("tipos"."id" = 10) [0m
   [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 9) [0m
 Completed in 106ms (View: 99, DB: 2) | 200 OK [http://financeiro.localhost/contas]
+
+
+Processing ContasController#index (for ::1 at 2010-07-04 20:17:11) [GET]
+Filter chain halted as [:authenticate] rendered_or_redirected.
+Completed in 37ms (View: 36, DB: 0) | 401 Unauthorized [http://financeiro.localhost/contas]
+
+
+Processing ContasController#index (for ::1 at 2010-07-04 20:17:21) [GET]
+  [4;36;1mConta Load (0.6ms)[0m   [0;1mSELECT * FROM "contas" [0m
+Rendering template within layouts/contas
+Rendering contas/index
+  [4;35;1mMovimento Load (0.3ms)[0m   [0mSELECT * FROM "movimentos" WHERE ("movimentos".conta_id = 1) [0m
+  [4;36;1mTipo Load (0.2ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 6) [0m
+  [4;35;1mMovimento Load (0.3ms)[0m   [0mSELECT * FROM "movimentos" WHERE ("movimentos".conta_id = 2) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 6) [0m
+  [4;35;1mMovimento Load (0.2ms)[0m   [0mSELECT * FROM "movimentos" WHERE ("movimentos".conta_id = 3) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 6) [0m
+  [4;35;1mMovimento Load (0.2ms)[0m   [0mSELECT * FROM "movimentos" WHERE ("movimentos".conta_id = 4) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 6) [0m
+  [4;35;1mMovimento Load (0.5ms)[0m   [0mSELECT * FROM "movimentos" WHERE ("movimentos".conta_id = 5) [0m
+  [4;36;1mTipo Load (0.2ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 8) [0m
+  [4;35;1mTipo Load (0.1ms)[0m   [0mSELECT * FROM "tipos" WHERE ("tipos"."id" = 10) [0m
+  [4;36;1mTipo Load (0.1ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 9) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "tipos" WHERE ("tipos"."id" = 9) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "tipos" WHERE ("tipos"."id" = 10) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM "tipos" WHERE ("tipos"."id" = 10) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM "tipos" WHERE ("tipos"."id" = 9) [0m
+Completed in 338ms (View: 62, DB: 3) | 200 OK [http://financeiro.localhost/contas]
