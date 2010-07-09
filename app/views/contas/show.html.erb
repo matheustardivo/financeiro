@@ -29,7 +29,7 @@
     <td><%=h movimento.descricao %></td>
     <td><%=h movimento.valor %></td>
     <td><%= link_to 'Edit', edit_movimento_path(movimento) %></td>
-    <td><%= link_to 'Destroy', movimento, :confirm => 'Are you sure?', :method => :delete_movimento %></td>
+    <td><%= link_to 'Destroy', movimento, :confirm => 'Are you sure?', :controller => 'movimentos', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
