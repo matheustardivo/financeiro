@@ -57,4 +57,14 @@ class MovimentosController < ApplicationController
       format.xml  { render :xml => @movimento }
     end
   end
+  
+  def destroy
+    @movimento = Movimento.find(params[:id])
+    @movimento.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(movimentos_url) }
+      format.xml  { head :ok }
+    end
+  end
 end
