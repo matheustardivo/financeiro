@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  fatura_id: 1
+  data: 2010-07-10
+  tipo_id: 1
+  parcelas: 1
+  descricao: MyText
+  valor: 9.99
+  despesa_id: 1
+
+two:
+  fatura_id: 1
+  data: 2010-07-10
+  tipo_id: 1
+  parcelas: 1
+  descricao: MyText
+  valor: 9.99
+  despesa_id: 1

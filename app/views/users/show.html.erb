@@ -1,0 +1,12 @@
+<h1>Dashboard</h1>
+<p>
+  <b>Usuário:</b>
+  <%=h @user.username %>
+</p>
+
+<p>
+  <b>E-mail:</b>
+  <%=h @user.email %>
+</p>
+
+<%= link_to 'Editar', edit_user_path(@user) %>

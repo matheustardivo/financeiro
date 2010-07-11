@@ -1,0 +1,62 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Cartões de crédito", cartaos_url %> &gt; 
+<%= link_to "Faturas", @fatura.cartao %> &gt; Detalhe da fatura
+
+<p>
+  <b>Cartão de crédito:</b>
+  <%=h @fatura.cartao.descricao %>
+</p>
+
+<p>
+  <b>Mês:</b>
+  <%=h @fatura.mes %>
+</p>
+
+<p>
+  <b>Situação:</b>
+  <%=h @fatura.situacao %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%=h @fatura.saldo %>
+</p>
+
+<% if @fatura.situacao == 'Aberta' %>
+<%= button_to "Fechar fatura", :action => "fechar" %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Data</th>
+    <th>Tipo</th>
+    <th>Prazo/Vista</th>
+    <th>Descrição</th>
+    <th>Valor</th>
+    <th>Ações</th>
+  </tr>
+
+<% @fatura.despesas.each do |despesa| %>
+  <tr>
+    <td><%=h despesa.data %></td>
+    <td><%=h despesa.tipo.nome %></td>
+    <td>
+    	<% if despesa.parcelas > 1 %>
+			Prazo: <%=h despesa.parcelas %>x
+		<% else %>
+			Vista
+		<% end %>
+    </td>
+    <td><%=h despesa.descricao %></td>
+    <td><%=h despesa.valor %></td>
+    <td nowrap>
+	<%= link_to 'Editar', edit_despesa_path(despesa) %> | 
+	<%= link_to 'Remover', despesa, :confirm => 'Confirma remover a despesa?', :method => :delete %>
+	</td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
+
+<% if @fatura.situacao == 'Aberta' %>
+<p><%= link_to 'Nova despesa', new_despesa_path({ :fatura_id => @fatura.id }) %></p>
+<% end %>

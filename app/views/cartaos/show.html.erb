@@ -1,0 +1,26 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Cartões de crédito", cartaos_url %> &gt; Faturas
+
+<p>
+  <b>Cartão de crédito:</b>
+  <%=h @cartao.descricao %>
+</p>
+
+<table>
+  <tr>
+    <th>Mês</th>
+    <th>Valor</th>
+    <th>Situação</th>
+    <th>Ações</th>
+  </tr>
+
+<% @cartao.faturas.each do |fatura| %>
+  <tr>
+    <td><%=h fatura.mes %></td>
+    <td><%=h fatura.saldo %></td>
+    <td><%=h fatura.situacao %></td>
+    <td nowrap>
+	<%= link_to 'Detalhe', fatura %>
+	</td>
+  </tr>
+<% end %>
+</table>

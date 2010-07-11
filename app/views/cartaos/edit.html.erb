@@ -1,0 +1,13 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Cartões de crédito", cartaos_url %> &gt; Editar cartão de crédito
+
+<% form_for(@cartao) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :descricao, "Descrição:" %><br />
+    <%= f.text_field :descricao %>
+  </p>
+  <p>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', cartaos_path %>
+  </p>
+<% end %>

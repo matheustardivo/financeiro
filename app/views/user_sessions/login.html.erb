@@ -1,0 +1,15 @@
+Financeiro &gt; Login
+
+<% form_for @user_session, :url => { :action => 'create' } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :username, "Usuário:" %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password, "Senha:" %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p><%= f.submit 'Entrar' %> ou <%= link_to 'Cadastrar novo usuário', new_user_path %></p>
+  <p><%= link_to 'Esqueci meu usuário/senha', new_user_path %></p>
+<% end %>

@@ -1,0 +1,36 @@
+<%= link_to "Dashboard", root_url %> &gt; 
+<%= link_to "Cartões de crédito", cartaos_url %> &gt; 
+<%= link_to "Faturas", @despesa.fatura.cartao %> &gt; 
+<%= link_to "Detalhe da fatura", @despesa.fatura %> &gt; Inserir despesa
+
+<p>Cartão de crédito: <%= @despesa.fatura.cartao.descricao %></p>
+<p>Mês: <%= @despesa.fatura.mes %></p>
+
+<% form_for(@despesa) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :fatura_id, :value => @despesa.fatura.id %>
+  <p>
+    <%= f.label :data, "Data:" %><br />
+    <%= f.date_select :data %>
+  </p>
+  <p>
+    <%= f.label :tipo_id, "Tipo:" %><br />
+    <%= collection_select(:despesa, :tipo_id, Tipo.all(:order => "nome", :conditions => { :user_id => current_user.id }), :id, :nome) %>
+  </p>
+  <p>
+    <%= f.label :parcelas, "Parcelas:" %><br />
+    <%= select(:despesa, :parcelas, (1..12).to_a) %>
+  </p>
+  <p>
+    <%= f.label :descricao, "Descrição:" %><br />
+    <%= f.text_area :descricao %>
+  </p>
+  <p>
+    <%= f.label :valor, "Valor:" %><br />
+    <%= f.text_field :valor %>
+  </p>
+  <p>
+    <%= f.submit 'Salvar' %> ou <%= link_to 'Voltar', fatura_path(@despesa.fatura) %>
+  </p>
+<% end %>
