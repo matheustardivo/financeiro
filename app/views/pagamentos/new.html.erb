@@ -1,31 +1,28 @@
-<h1>New pagamento</h1>
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Pagamentos", pagamentos_url %> &gt; Inserir pagamento
 
 <% form_for(@pagamento) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :nome %><br />
+    <%= f.label :nome, "Nome:" %><br />
     <%= f.text_field :nome %>
   </p>
   <p>
-    <%= f.label :descricao %><br />
+    <%= f.label :descricao, "Descrição:" %><br />
     <%= f.text_area :descricao %>
   </p>
   <p>
-    <%= f.label :vencimento %><br />
+    <%= f.label :vencimento, "Vencimento:" %><br />
     <%= f.date_select :vencimento %>
   </p>
   <p>
-    <%= f.label :valor %><br />
+    <%= f.label :valor, "Valor:" %><br />
     <%= f.text_field :valor %>
   </p>
   <p>
-    <%= f.label :confirmado %><br />
-    <%= f.check_box :confirmado %>
+    <%= f.label :confirmado, "Confirmado? " %><%= f.check_box :confirmado %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Inserir' %> ou <%= link_to 'Voltar', pagamentos_path %>
   </p>
 <% end %>
-
-<%= link_to 'Back', pagamentos_path %>
