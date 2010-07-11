@@ -1,25 +1,22 @@
-<h1>Editing tipo</h1>
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Tipos", tipos_url %> &gt; Atualizar tipo
 
 <% form_for(@tipo) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :nome %><br />
+    <%= f.label :nome, "Nome:" %><br />
     <%= f.text_field :nome %>
   </p>
   <p>
-    <%= f.label :descricao %><br />
+    <%= f.label :descricao, "Descrição:" %><br />
     <%= f.text_area :descricao %>
   </p>
   <p>
-    <%= f.label :valor %><br />
+    <%= f.label :valor, "Valor:" %><br />
 	<%= f.radio_button :valor, "C" %>Crédito<br />
 	<%= f.radio_button :valor, "D" %>Débito
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Atualizar' %> ou <%= link_to 'Voltar', tipos_path %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @tipo %> |
-<%= link_to 'Back', tipos_path %>

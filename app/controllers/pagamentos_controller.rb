@@ -1,8 +1,14 @@
 class PagamentosController < ApplicationController
+  before_filter :authenticate
+  
   # GET /pagamentos
   # GET /pagamentos.xml
   def index
-    @pagamentos = Pagamento.all
+    if params[:ordenar] == 'confirmado'
+      @pagamentos = Pagamento.all(:order => "confirmado DESC", :conditions => { :user_id => current_user.id })
+    else
+      @pagamentos = Pagamento.all(:order => "vencimento DESC", :conditions => { :user_id => current_user.id })
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,11 +47,12 @@ class PagamentosController < ApplicationController
   # POST /pagamentos.xml
   def create
     @pagamento = Pagamento.new(params[:pagamento])
+    @pagamento.user = current_user
 
     respond_to do |format|
       if @pagamento.save
-        flash[:notice] = 'Pagamento was successfully created.'
-        format.html { redirect_to(@pagamento) }
+        flash[:notice] = 'Pagamento cadastrado com sucesso.'
+        format.html { redirect_to(pagamentos_path) }
         format.xml  { render :xml => @pagamento, :status => :created, :location => @pagamento }
       else
         format.html { render :action => "new" }
@@ -61,8 +68,8 @@ class PagamentosController < ApplicationController
 
     respond_to do |format|
       if @pagamento.update_attributes(params[:pagamento])
-        flash[:notice] = 'Pagamento was successfully updated.'
-        format.html { redirect_to(@pagamento) }
+        flash[:notice] = 'Pagamento atualizado com sucesso.'
+        format.html { redirect_to(pagamentos_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,6 +83,7 @@ class PagamentosController < ApplicationController
   def destroy
     @pagamento = Pagamento.find(params[:id])
     @pagamento.destroy
+    flash[:notice] = 'Pagamento removido com sucesso.'
 
     respond_to do |format|
       format.html { redirect_to(pagamentos_url) }

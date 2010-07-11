@@ -1,20 +1,17 @@
-<h1>Editing conta</h1>
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Contas", contas_url %> &gt; Editar conta
 
 <% form_for(@conta) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :nome %><br />
+    <%= f.label :nome, "Nome:" %><br />
     <%= f.text_field :nome %>
   </p>
   <p>
-    <%= f.label :descricao %><br />
+    <%= f.label :descricao, "Descrição" %><br />
     <%= f.text_area :descricao %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', contas_path %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @conta %> |
-<%= link_to 'Back', contas_path %>

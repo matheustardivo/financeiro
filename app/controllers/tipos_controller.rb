@@ -1,8 +1,10 @@
 class TiposController < ApplicationController
+  before_filter :authenticate
+
   # GET /tipos
   # GET /tipos.xml
   def index
-    @tipos = Tipo.all
+    @tipos = Tipo.all(:order => "nome", :conditions => { :user_id => current_user.id })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,11 +43,12 @@ class TiposController < ApplicationController
   # POST /tipos.xml
   def create
     @tipo = Tipo.new(params[:tipo])
+    @tipo.user = current_user
 
     respond_to do |format|
       if @tipo.save
-        flash[:notice] = 'Tipo was successfully created.'
-        format.html { redirect_to(@tipo) }
+        flash[:notice] = 'Tipo cadastrado com sucesso.'
+        format.html { redirect_to(tipos_path) }
         format.xml  { render :xml => @tipo, :status => :created, :location => @tipo }
       else
         format.html { render :action => "new" }
@@ -61,8 +64,8 @@ class TiposController < ApplicationController
 
     respond_to do |format|
       if @tipo.update_attributes(params[:tipo])
-        flash[:notice] = 'Tipo was successfully updated.'
-        format.html { redirect_to(@tipo) }
+        flash[:notice] = 'Tipo atualizado com sucesso.'
+        format.html { redirect_to(tipos_path) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

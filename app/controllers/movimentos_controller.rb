@@ -1,21 +1,19 @@
 class MovimentosController < ApplicationController
+  before_filter :authenticate
+
   def create
     @movimento = Movimento.new(params[:movimento])
 
     respond_to do |format|
       if @movimento.save
-        flash[:notice] = 'Movimento was successfully created.'
-        format.html { redirect_to(@movimento) }
+        flash[:notice] = 'Movimento cadastrado com sucesso.'
+        format.html { redirect_to(@movimento.conta) }
         format.xml  { render :xml => @movimento, :status => :created, :location => @movimento }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @movimento.errors, :status => :unprocessable_entity }
       end
     end
-  end
-  
-  def index
-    @movimentos = Movimento.all
   end
   
   def edit
@@ -27,22 +25,13 @@ class MovimentosController < ApplicationController
 
     respond_to do |format|
       if @movimento.update_attributes(params[:movimento])
-        flash[:notice] = 'Movimento was successfully updated.'
-        format.html { redirect_to(@movimento) }
+        flash[:notice] = 'Movimento atualizado com sucesso.'
+        format.html { redirect_to(@movimento.conta) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @movimento.errors, :status => :unprocessable_entity }
       end
-    end
-  end
-  
-  def show
-    @movimento = Movimento.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @movimento }
     end
   end
   
@@ -60,10 +49,14 @@ class MovimentosController < ApplicationController
   
   def destroy
     @movimento = Movimento.find(params[:id])
+    
+    conta_atual = Conta.find(@movimento.conta.id)
+    
     @movimento.destroy
 
     respond_to do |format|
-      format.html { redirect_to(movimentos_url) }
+      flash[:notice] = 'Movimento removido com sucesso.'
+      format.html { redirect_to(conta_atual) }
       format.xml  { head :ok }
     end
   end

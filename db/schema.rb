@@ -9,11 +9,39 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100704164056) do
+ActiveRecord::Schema.define(:version => 20100710232553) do
+
+  create_table "cartaos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "contas", :force => true do |t|
     t.string   "nome"
     t.text     "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "despesas", :force => true do |t|
+    t.integer  "fatura_id"
+    t.date     "data"
+    t.integer  "tipo_id"
+    t.integer  "parcelas"
+    t.text     "descricao"
+    t.decimal  "valor"
+    t.integer  "despesa_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faturas", :force => true do |t|
+    t.integer  "cartao_id"
+    t.date     "mes"
+    t.string   "situacao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20100704164056) do
     t.boolean  "confirmado"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tipos", :force => true do |t|
@@ -44,6 +73,17 @@ ActiveRecord::Schema.define(:version => 20100704164056) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "valor"
+    t.integer  "user_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

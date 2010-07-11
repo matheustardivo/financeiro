@@ -1,8 +1,10 @@
 class ContasController < ApplicationController
+  before_filter :authenticate
+
   # GET /contas
   # GET /contas.xml
   def index
-    @contas = Conta.all
+    @contas = Conta.all(:conditions => { :user_id => current_user.id })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,10 +43,11 @@ class ContasController < ApplicationController
   # POST /contas.xml
   def create
     @conta = Conta.new(params[:conta])
+    @conta.user = current_user
 
     respond_to do |format|
       if @conta.save
-        flash[:notice] = 'Conta was successfully created.'
+        flash[:notice] = 'Conta cadastrada com sucesso.'
         format.html { redirect_to(@conta) }
         format.xml  { render :xml => @conta, :status => :created, :location => @conta }
       else
@@ -61,7 +64,7 @@ class ContasController < ApplicationController
 
     respond_to do |format|
       if @conta.update_attributes(params[:conta])
-        flash[:notice] = 'Conta was successfully updated.'
+        flash[:notice] = 'Conta atualizada com sucesso.'
         format.html { redirect_to(@conta) }
         format.xml  { head :ok }
       else
@@ -75,7 +78,13 @@ class ContasController < ApplicationController
   # DELETE /contas/1.xml
   def destroy
     @conta = Conta.find(params[:id])
-    @conta.destroy
+    
+    if @conta.movimentos.empty?
+      @conta.destroy
+      flash[:notice] = 'Conta removida com sucesso.'
+    else
+      flash[:notice] = 'Conta não pode ser removida por possuir movimentações associadas.'
+    end
 
     respond_to do |format|
       format.html { redirect_to(contas_url) }

@@ -1,25 +1,27 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Contas", contas_url %> &gt; Extrato
+
 <p>
   <b>Nome:</b>
   <%=h @conta.nome %>
 </p>
 
 <p>
-  <b>Descricao:</b>
+  <b>Descrição:</b>
   <%=h @conta.descricao %>
 </p>
 
-<h2>Saldo atual: <%=h @conta.saldo %></h2>
+<p>
+  <b>Saldo atual:</b>
+  <%=h @conta.saldo %>
+</p>
 
-<%= link_to 'Edit', edit_conta_path(@conta) %> |
-<%= link_to 'Back', contas_path %>
-
-<h2>Movimentos</h2>
 <table>
   <tr>
     <th>Tipo</th>
     <th>Dia</th>
-    <th>Descricao</th>
+    <th>Descrição</th>
     <th>Valor</th>
+    <th>Ações</th>
   </tr>
 
 <% @conta.movimentos.each do |movimento| %>
@@ -28,10 +30,12 @@
     <td><%=h movimento.dia %></td>
     <td><%=h movimento.descricao %></td>
     <td><%=h movimento.valor %></td>
-    <td><%= link_to 'Edit', edit_movimento_path(movimento) %></td>
-    <td><%= link_to 'Destroy', movimento, :confirm => 'Are you sure?', :controller => 'movimentos', :method => :delete %></td>
+    <td nowrap>
+    	<%= link_to 'Editar', edit_movimento_path(movimento) %> | 
+		<%= link_to 'Remover', movimento, :confirm => 'Confirmar remover o movimento?', :controller => 'movimentos', :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<p><%= link_to 'Adicionar Movimento', new_movimento_path({ :conta_id => @conta.id }) %></p>
+<p><%= link_to 'Adicionar movimento', new_movimento_path({ :conta_id => @conta.id }) %></p>

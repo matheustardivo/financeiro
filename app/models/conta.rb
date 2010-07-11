@@ -1,7 +1,8 @@
 class Conta < ActiveRecord::Base
-  validates_presence_of :nome
+  validates_presence_of :nome, :user_id
   
-  has_many :movimentos
+  belongs_to :user
+  has_many :movimentos, :order => "dia DESC"
   
   def saldo
     saldo_atual = 0
