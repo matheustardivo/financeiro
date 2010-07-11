@@ -1,4 +1,4 @@
-<h1>Editar usuário</h1>
+<%= link_to "Dashboard", root_url %> &gt; Atualizar usuário
 
 <% form_for(@user) do |f| %>
   <%= f.error_messages %>
@@ -20,6 +20,6 @@
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-    <%= f.submit 'Salvar' %> ou <%= link_to 'Voltar', root_path %>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', root_path %>
   </p>
 <% end %>
