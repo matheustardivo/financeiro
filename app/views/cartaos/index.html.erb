@@ -1,0 +1,28 @@
+<%= link_to "Dashboard", root_url %> &gt; Cartões de crédito
+
+<table>
+  <tr>
+    <th>Descrição</th>
+    <th>Mês fatura atual</th>
+    <th>Valor atual</th>
+    <th>Ações</th>
+  </tr>
+
+<% @cartaos.each do |cartao| %>
+  <tr>
+    <td><%=h cartao.descricao %></td>
+	<td><%=h cartao.fatura_atual(cartao.id).mes %></td>
+	<td><%=h cartao.fatura_atual(cartao.id).saldo %></td>
+    <td nowrap>
+	<%= link_to 'Fatura atual', cartao.fatura_atual(cartao.id) %> | 
+	<%= link_to 'Faturas', cartao %> | 
+	<%= link_to 'Editar', edit_cartao_path(cartao) %> | 
+	<%= link_to 'Remover', cartao, :confirm => 'Confirma remover o cartão de crédito?', :method => :delete %>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo cartão de crédito', new_cartao_path %>

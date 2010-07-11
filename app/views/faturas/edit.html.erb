@@ -1,0 +1,24 @@
+<h1>Editing fatura</h1>
+
+<% form_for(@fatura) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :cartao_id %><br />
+    <%= f.text_field :cartao_id %>
+  </p>
+  <p>
+    <%= f.label :mes %><br />
+    <%= f.date_select :mes %>
+  </p>
+  <p>
+    <%= f.label :situacao %><br />
+    <%= f.text_field :situacao %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @fatura %> |
+<%= link_to 'Back', faturas_path %>

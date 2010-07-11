@@ -1,0 +1,68 @@
+<mockup version="1.0" skin="sketch" measuredW="931" measuredH="508" mockupW="882" mockupH="491">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="39" y="7" w="882" h="491" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Financeiro%20-%20Cart%F5es%20de%20cr%E9dito%0Ahttp%3A//financeiro.tardivo.org/cartoes/1/faturas/3</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="173" y="90" w="-1" h="-1" measuredW="398" measuredH="23" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Dashboard%2C%20Cart%F5es%20de%20cr%E9dito%2C%20Faturas%2C%20Detalhe%20da%20fatura</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::DataGrid" x="173" y="220" w="638" h="206" measuredW="480" measuredH="206" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hLines>false</hLines>
+        <selectedIndex>-1</selectedIndex>
+        <text>Data%2C%20Tipo%2C%20Descri%E7%E3o%2C%20Valor%2C%20A%E7%F5es%0A01/07/2010%2C%20Almo%E7o%2C%20Almo%E7o%20no%20Tenda%2C%20R%24%2010%5C%2C00%2C%20Editar%20%7C%20Remover%0A02/07/2010%2C%20Almo%E7o%2C%20Almo%E7o%20no%20Tenda%2C%20R%24%2012%5C%2C00%2C%20Editar%20%7C%20Remover%0A03/07/2010%2C%20Matheus%2C%20Playstation%203%20-%20P.%203/6%2C%20R%24%2011%5C%2C50%2C%20Editar%20%7C%20Remover%0A04/07/2010%2C%20Almo%E7o%2C%20Almo%E7o%20no%20Tenda%2C%20R%24%2010%5C%2C70%2C%20Editar%20%7C%20Remover%0A05/07/2010%2C%20Almo%E7o%2C%20Almo%E7o%20no%20Tenda%2C%20R%24%2011%5C%2C00%2C%20Editar%20%7C%20Remover%0A06/07/2010%2C%20Almo%E7o%2C%20Almo%E7o%20no%20Tenda%2C%20R%24%2012%5C%2C90%2C%20Editar%20%7C%20Remover</text>
+        <vLines>false</vLines>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Menu" x="54" y="90" w="104" h="-1" measuredW="150" measuredH="158" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>2</selectedIndex>
+        <text>Dashboard%0AContas%0ACart%F5es%0A--%0APagamentos%0ATipos%0A--%0ASair</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Label" x="173" y="113" w="-1" h="-1" measuredW="114" measuredH="23" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Cart%E3o%20de%20cr%E9dito%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="287" y="112" w="-1" h="-1" measuredW="126" measuredH="23" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>REAL%20VISA%20Matheus</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="173" y="137" w="33" h="23" measuredW="33" measuredH="23" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>M%EAs%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="287" y="136" w="-1" h="-1" measuredW="53" measuredH="23" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>07/2010</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="173" y="161" w="40" h="23" measuredW="40" measuredH="23" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Valor%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="287" y="160" w="-1" h="-1" measuredW="64" measuredH="23" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>R%24%20900%2C00</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Link" x="173" y="426" w="-1" h="-1" measuredW="85" measuredH="23" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Nova%20despesa</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Button" x="173" y="184" w="-1" h="-1" measuredW="108" measuredH="28" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Fechar%20fatura</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

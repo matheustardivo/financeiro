@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  cartao_id: 1
+  mes: 2010-07-10
+  situacao: MyString
+
+two:
+  cartao_id: 1
+  mes: 2010-07-10
+  situacao: MyString

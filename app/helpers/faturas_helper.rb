@@ -1,0 +1,2 @@
+module FaturasHelper
+end

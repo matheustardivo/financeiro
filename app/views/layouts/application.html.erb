@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Tardivo.org - Financeiro</title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'financeiro' %>
+</head>
+<body>
+	<div id="container">
+		<div id="nav">
+			<ul>
+				<% if current_user %>
+					<li><%= link_to 'Dashboard', user_path(:current) %></li>
+					
+					<li><%= link_to 'Contas', contas_path %></li>
+					<li><%= link_to 'Cartões', cartaos_path %></li>
+					<li><%= link_to 'Pagamentos', pagamentos_path %></li>
+					<li><%= link_to 'Tipos', tipos_path %></li>
+					
+					<li><%= link_to 'Logout', logout_path %></li>
+				<% else %>
+					<li><%= link_to 'Login', login_path %></li>
+				<% end %>
+			</ul>
+		</div>
+
+		<div id="content">
+			<p style="color: green"><%= flash[:notice] %></p>
+			<%= yield %>
+		</div>
+	</div>
+</body>
+</html>

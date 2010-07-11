@@ -1,0 +1,25 @@
+<h1>Cadastrar novo usuário</h1>
+
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :username, "Usuário:" %><br />
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :email, "E-mail:" %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :password, "Senha:" %><br />
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, "Confirmar a senha:" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.submit 'Cadastrar' %> ou <%= link_to 'Voltar', root_path %>
+  </p>
+<% end %>
