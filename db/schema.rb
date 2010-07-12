@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100710232553) do
+ActiveRecord::Schema.define(:version => 20100712215410) do
+
+  create_table "agendas", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "nome"
+    t.date     "mes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "cartaos", :force => true do |t|
     t.string   "descricao"
@@ -65,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20100710232553) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "agenda_id"
   end
 
   create_table "tipos", :force => true do |t|

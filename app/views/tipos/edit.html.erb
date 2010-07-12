@@ -1,4 +1,4 @@
-<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Tipos", tipos_url %> &gt; Atualizar tipo
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Tipos", tipos_url %> &gt; Editar tipo
 
 <% form_for(@tipo) do |f| %>
   <%= f.error_messages %>
@@ -17,6 +17,6 @@
 	<%= f.radio_button :valor, "D" %>Débito
   </p>
   <p>
-    <%= f.submit 'Atualizar' %> ou <%= link_to 'Voltar', tipos_path %>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', tipos_path %>
   </p>
 <% end %>

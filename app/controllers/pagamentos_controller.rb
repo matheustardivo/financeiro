@@ -16,21 +16,16 @@ class PagamentosController < ApplicationController
     end
   end
 
-  # GET /pagamentos/1
-  # GET /pagamentos/1.xml
-  def show
-    @pagamento = Pagamento.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @pagamento }
-    end
-  end
-
   # GET /pagamentos/new
   # GET /pagamentos/new.xml
   def new
+    if params[:agenda_id] == nil
+      flash[:notice] = 'Agenda não encontrada.'
+      redirect_to :back
+    end
+    
     @pagamento = Pagamento.new
+    @pagamento.agenda = Agenda.find(params[:agenda_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,7 +47,7 @@ class PagamentosController < ApplicationController
     respond_to do |format|
       if @pagamento.save
         flash[:notice] = 'Pagamento cadastrado com sucesso.'
-        format.html { redirect_to(pagamentos_path) }
+        format.html { redirect_to(@pagamento.agenda) }
         format.xml  { render :xml => @pagamento, :status => :created, :location => @pagamento }
       else
         format.html { render :action => "new" }
@@ -69,7 +64,7 @@ class PagamentosController < ApplicationController
     respond_to do |format|
       if @pagamento.update_attributes(params[:pagamento])
         flash[:notice] = 'Pagamento atualizado com sucesso.'
-        format.html { redirect_to(pagamentos_path) }
+        format.html { redirect_to(@pagamento.agenda) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,11 +77,14 @@ class PagamentosController < ApplicationController
   # DELETE /pagamentos/1.xml
   def destroy
     @pagamento = Pagamento.find(params[:id])
+    
+    agenda_atual = Agenda.find(@pagamento.agenda.id)
+    
     @pagamento.destroy
-    flash[:notice] = 'Pagamento removido com sucesso.'
 
     respond_to do |format|
-      format.html { redirect_to(pagamentos_url) }
+      flash[:notice] = 'Pagamento removido com sucesso.'
+      format.html { redirect_to(agenda_atual) }
       format.xml  { head :ok }
     end
   end

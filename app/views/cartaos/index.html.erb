@@ -8,6 +8,7 @@
     <th>Ações</th>
   </tr>
 
+<% valor_total = 0 %>
 <% @cartaos.each do |cartao| %>
   <tr>
     <td><%=h cartao.descricao %></td>
@@ -20,9 +21,10 @@
 	<%= link_to 'Remover', cartao, :confirm => 'Confirma remover o cartão de crédito?', :method => :delete %>
 	</td>
   </tr>
+<% valor_total += cartao.fatura_atual(cartao.id).saldo %>
 <% end %>
 </table>
 
-<br />
+<p><b>Valor total atual:</b> <%=h valor_total %></p>
 
-<%= link_to 'Novo cartão de crédito', new_cartao_path %>
+<p><%= link_to 'Novo cartão de crédito', new_cartao_path %></p>
