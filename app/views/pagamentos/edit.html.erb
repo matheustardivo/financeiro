@@ -1,7 +1,12 @@
-<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Pagamentos", pagamentos_url %> &gt; Atualizar pagamento
+<%= link_to "Dashboard", root_url %> &gt; 
+<%= link_to "Agendas", agendas_url %> &gt; 
+<%= link_to "Pagamentos", @pagamento.agenda %> &gt; 
+Editar pagamento
 
 <% form_for(@pagamento) do |f| %>
   <%= f.error_messages %>
+
+  <%= f.hidden_field :agenda_id, :value => @pagamento.agenda.id %>
 
   <p>
     <%= f.label :nome, "Nome:" %><br />
@@ -23,6 +28,6 @@
     <%= f.label :confirmado, "Confirmado? " %><%= f.check_box :confirmado %>
   </p>
   <p>
-    <%= f.submit 'Atualizar' %> ou <%= link_to 'Voltar', pagamentos_path %>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', @pagamento.agenda %>
   </p>
 <% end %>

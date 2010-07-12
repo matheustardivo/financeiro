@@ -1,7 +1,7 @@
 <%= link_to "Dashboard", root_url %> &gt; 
 <%= link_to "Contas", contas_url %> &gt; 
 <%= link_to "Extrato", @movimento.conta %> &gt; 
-Atualizar movimento
+Editar movimento
 
 <p>Conta: <%= @movimento.conta.nome %></p>
 
@@ -27,6 +27,6 @@ Atualizar movimento
     <%= f.text_field :valor %>
   </p>
   <p>
-    <%= f.submit 'Atualizar' %> ou <%= link_to 'Voltar', @movimento.conta %>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', @movimento.conta %>
   </p>
 <% end %>

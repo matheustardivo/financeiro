@@ -1,0 +1,17 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Agendas", agendas_url %> &gt; Editar agenda
+
+<% form_for(@agenda) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nome, "Nome:" %><br />
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :mes, "Mês:" %><br />
+    <%= f.date_select :mes %>
+  </p>
+  <p>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', agendas_path %>
+  </p>
+<% end %>

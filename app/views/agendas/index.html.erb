@@ -1,0 +1,31 @@
+<%= link_to "Dashboard", root_url %> &gt; Agendas
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Mês</th>
+    <th>Confirmado</th>
+    <th>Valor confirmado</th>
+    <th>Valor pendente</th>
+    <th>Ações</th>
+  </tr>
+
+<% @agendas.each do |agenda| %>
+  <tr>
+    <td><%=h agenda.nome %></td>
+    <td><%=h agenda.mes %></td>
+    <td><%=h agenda.confirmado %></td>
+    <td><%=h agenda.valor_confirmado %></td>
+    <td><%=h agenda.valor_pendente %></td>
+    <td nowrap>
+    	<%= link_to 'Pagamentos', agenda %> | 
+		<%= link_to 'Editar', edit_agenda_path(agenda) %> | 
+		<%= link_to 'Remover', agenda, :confirm => 'Confirma remover a agenda?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova agenda', new_agenda_path %>
