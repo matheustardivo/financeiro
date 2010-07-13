@@ -1,6 +1,6 @@
 class DespesasController < ApplicationController
-  # GET /despesas/new
-  # GET /despesas/new.xml
+  before_filter :authenticate
+  
   def new
     if params[:fatura_id] == nil
       flash[:notice] = 'Fatura não encontrada.'
@@ -16,22 +16,30 @@ class DespesasController < ApplicationController
     end
   end
 
-  # GET /despesas/1/edit
   def edit
     @despesa = Despesa.find(params[:id])
   end
 
-  # POST /despesas
-  # POST /despesas.xml
   def create
     @despesa = Despesa.new(params[:despesa])
+    fatura_original = @despesa.fatura
     
-    # Se a quantidade de parcelas for maior que 1
-    if @despesa.parcelas > 1
-      despesa_cadastrada = true
+    # Valida a despesa antes de qualquer operação
+    unless @despesa.valid?
+      respond_to do |format|
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @despesa.errors, :status => :unprocessable_entity }
+      end
+      return
+    end
+    
+    if @despesa.parcelas == 1
+      @despesa.save
+      flash[:notice] = 'Despesa cadastrada com sucesso.'
       
+    else
+      # Parcelamento
       valor_parcelas = @despesa.valor / @despesa.parcelas
-      fatura_original = @despesa.fatura
       mes_fatura_atual = @despesa.fatura.mes
       
       Range.new(1, @despesa.parcelas).each do |parcela|
@@ -43,11 +51,7 @@ class DespesasController < ApplicationController
         despesa.valor = valor_parcelas
         
         despesa.fatura = @despesa.fatura
-        unless despesa.save
-          despesa_cadastrada = false
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @despesa.errors, :status => :unprocessable_entity }
-        end
+        despesa.save
         
         if parcela < @despesa.parcelas
           @despesa.data = @despesa.data >> 1
@@ -68,31 +72,15 @@ class DespesasController < ApplicationController
         end
       end
       
-      if despesa_cadastrada
-        respond_to do |format|
-          flash[:notice] = 'Despesa parcelada cadastrada com sucesso.'
-          format.html { redirect_to(fatura_original) }
-          format.xml  { render :xml => @despesa, :status => :created, :location => @despesa }
-        end
-      end
-      
-      return
+      flash[:notice] = 'Despesa parcelada cadastrada com sucesso.'
     end
     
     respond_to do |format|
-      if @despesa.save
-        flash[:notice] = 'Despesa cadastrada com sucesso.'
-        format.html { redirect_to(@despesa.fatura) }
-        format.xml  { render :xml => @despesa, :status => :created, :location => @despesa }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @despesa.errors, :status => :unprocessable_entity }
-      end
+      format.html { redirect_to(fatura_original) }
+      format.xml  { render :xml => @despesa, :status => :created, :location => @despesa }
     end
   end
 
-  # PUT /despesas/1
-  # PUT /despesas/1.xml
   def update
     @despesa = Despesa.find(params[:id])
 
@@ -108,13 +96,12 @@ class DespesasController < ApplicationController
     end
   end
 
-  # DELETE /despesas/1
-  # DELETE /despesas/1.xml
   def destroy
     @despesa = Despesa.find(params[:id])
     @despesa.destroy
 
     respond_to do |format|
+      flash[:notice] = 'Despesa removida com sucesso.'
       format.html { redirect_to(@despesa.fatura) }
       format.xml  { head :ok }
     end
