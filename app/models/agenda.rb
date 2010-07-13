@@ -1,5 +1,7 @@
 class Agenda < ActiveRecord::Base
   
+  validates_presence_of :nome, :mes
+  
   belongs_to :user
   has_many :pagamentos, :order => "vencimento"
   
