@@ -1,4 +1,6 @@
 class CartaosController < ApplicationController
+  before_filter :authenticate
+  
   # GET /cartaos
   # GET /cartaos.xml
   def index
