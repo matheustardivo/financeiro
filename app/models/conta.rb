@@ -18,4 +18,8 @@ class Conta < ActiveRecord::Base
     return saldo_atual
   end
   
+  def saldo_formatado
+    Dinheiro.new(saldo).real_formatado
+  end
+  
 end

@@ -5,31 +5,67 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Tardivo.org - Financeiro</title>
-  <%= stylesheet_link_tag 'scaffold' %>
-  <%= stylesheet_link_tag 'financeiro' %>
+  <%= stylesheet_link_tag 'style', :media => 'all' %>
+  <%= stylesheet_link_tag 'print', :media => 'print' %>
+
+  <%= javascript_include_tag 'dbx.js' %>
+  <%= javascript_include_tag 'dbx-key.js' %>
+
+  <%= stylesheet_link_tag 'dbx', :media => 'screen, projection' %>
 </head>
 <body>
-	<div id="container">
-		<div id="nav">
-			<ul>
-				<% if current_user %>
-					<li><%= link_to 'Dashboard', user_path(:current) %></li>
-					
-					<li><%= link_to 'Contas', contas_path %></li>
-					<li><%= link_to 'Cartões', cartaos_path %></li>
-					<li><%= link_to 'Agenda', agendas_path %></li>
-					<li><%= link_to 'Tipos', tipos_path %></li>
-					
-					<li><%= link_to 'Logout', logout_path %></li>
-				<% else %>
-					<li><%= link_to 'Login', login_path %></li>
-				<% end %>
-			</ul>
-		</div>
+	<div style="display:none;">
+		<%= image_tag "agradient-30medium.gif", :alt => 'preload' %>
+	</div>
+	
+	<div id="page" class="fix">
+		<div id="wrapper" class="fix">
+			<div id="header" class="fix">
+				<h1 class="blogtitle">Tardivo.org</h1>
+	      		<div class="description">Financeiro</div>
+		    </div>
+		
+			<div id="nav" class="fix">
+				<ul class="fix">
+					<li class="page_item current_page_item">
+						<a class="home" href="http://blog.tardivo.org/" title="Home">
+							<%= image_tag "home-icon.png", :alt => 'home' %>
+						</a>
+					</li>
+				</ul>
+			</div>
+			
+			<div id="container" class="fix">
+				<div id="left-col">
+					<div id="content">
+						<div class="entry">
+							<%= yield %>
+						</div>
+					</div>
+				</div>
+				
+				<div class="dbx-group" id="sidebar">
+					<div id="categories" class="dbx-box">
+						<h3 class="dbx-handle">Menu</h3>
+						<div class="dbx-content">
+							<ul>
+								<% if current_user %>
+									<li><%= link_to 'Dashboard', user_path(:current) %></li>
 
-		<div id="content">
-			<p style="color: green"><%= flash[:notice] %></p>
-			<%= yield %>
+									<li><%= link_to 'Contas', contas_path %></li>
+									<li><%= link_to 'Cartões', cartaos_path %></li>
+									<li><%= link_to 'Agenda', agendas_path %></li>
+									<li><%= link_to 'Tipos', tipos_path %></li>
+
+									<li><%= link_to 'Logout', logout_path %></li>
+								<% else %>
+									<li><%= link_to 'Login', login_path %></li>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

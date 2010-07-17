@@ -16,8 +16,8 @@
 <% @cartao.faturas.each do |fatura| %>
   <tr>
     <td><%=h fatura.mes %></td>
-    <td><%=h fatura.saldo %></td>
-    <td><%=h fatura.situacao %></td>
+    <td><%=h fatura.saldo_formatado %></td>
+    <td nowrap><%=h fatura.situacao %></td>
     <td nowrap>
 	<%= link_to 'Detalhe', fatura %>
 	</td>

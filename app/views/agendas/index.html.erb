@@ -15,8 +15,8 @@
     <td><%=h agenda.nome %></td>
     <td><%=h agenda.mes %></td>
     <td><%=h agenda.confirmado %></td>
-    <td><%=h agenda.valor_confirmado %></td>
-    <td><%=h agenda.valor_pendente %></td>
+    <td nowrap><%=h agenda.valor_confirmado %></td>
+    <td nowrap><%=h agenda.valor_pendente %></td>
     <td nowrap>
     	<%= link_to 'Pagamentos', agenda %> | 
 		<%= link_to 'Editar', edit_agenda_path(agenda) %> | 

@@ -12,7 +12,7 @@
 
 <p>
   <b>Saldo atual:</b>
-  <%=h @conta.saldo %>
+  <%=h @conta.saldo_formatado %>
 </p>
 
 <table>
@@ -27,9 +27,9 @@
 <% @conta.movimentos.each do |movimento| %>
   <tr>
     <td><%=h movimento.tipo.nome %></td>
-    <td><%=h movimento.dia %></td>
+    <td><%=h movimento.dia_to_s %></td>
     <td><%=h movimento.descricao %></td>
-    <td><%=h movimento.valor %></td>
+    <td nowrap><%=h movimento.valor_formatado %></td>
     <td nowrap>
     	<%= link_to 'Editar', edit_movimento_path(movimento) %> | 
 		<%= link_to 'Remover', movimento, :confirm => 'Confirmar remover o movimento?', :controller => 'movimentos', :method => :delete %>
