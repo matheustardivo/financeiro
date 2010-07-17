@@ -11,23 +11,23 @@
 
   <%= f.hidden_field :fatura_id, :value => @despesa.fatura.id %>
   <p>
-    <%= f.label :data, "Data:" %><br />
+    <%= f.label :data, "Data:" %>
     <%= f.date_select :data %>
   </p>
   <p>
-    <%= f.label :tipo_id, "Tipo:" %><br />
+    <%= f.label :tipo_id, "Tipo:" %>
     <%= collection_select(:despesa, :tipo_id, Tipo.all(:order => "nome", :conditions => { :user_id => current_user.id }), :id, :nome) %>
   </p>
   <p>
-    <%= f.label :parcelas, "Parcelas:" %><br />
+    <%= f.label :parcelas, "Parcelas:" %>
     <%= select(:despesa, :parcelas, (1..12).to_a) %>
   </p>
   <p>
-    <%= f.label :descricao, "Descrição:" %><br />
+    <%= f.label :descricao, "Descrição:" %>
     <%= f.text_area :descricao %>
   </p>
   <p>
-    <%= f.label :valor, "Valor:" %><br />
+    <%= f.label :valor, "Valor:" %>
     <%= f.text_field :valor %>
   </p>
   <p>

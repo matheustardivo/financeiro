@@ -11,19 +11,19 @@ Inserir movimento
   <%= f.hidden_field :conta_id, :value => @movimento.conta.id %>
 
   <p>
-    <%= f.label :tipo_id, "Tipo:" %><br />
+    <%= f.label :tipo_id, "Tipo:" %>
     <%= collection_select(:movimento, :tipo_id, Tipo.all(:order => "nome", :conditions => { :user_id => current_user.id }), :id, :nome) %>
   </p>
   <p>
-    <%= f.label :dia, "Data:" %><br />
+    <%= f.label :dia, "Data:" %>
     <%= f.date_select :dia %>
   </p>
   <p>
-    <%= f.label :descricao, "Descrição:" %><br />
+    <%= f.label :descricao, "Descrição:" %>
     <%= f.text_area :descricao %>
   </p>
   <p>
-    <%= f.label :valor, "Valor:" %><br />
+    <%= f.label :valor, "Valor:" %>
     <%= f.text_field :valor %>
   </p>
   <p>

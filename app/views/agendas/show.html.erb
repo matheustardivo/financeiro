@@ -6,7 +6,7 @@
 </p>
 
 <p>
-  <b>Mes:</b>
+  <b>Mês:</b>
   <%=h @agenda.mes %>
 </p>
 
@@ -24,8 +24,8 @@
   <tr>
     <td><%=h pagamento.nome %></td>
     <td><%=h pagamento.descricao %></td>
-    <td><%=h pagamento.vencimento %></td>
-    <td><%=h pagamento.valor %></td>
+    <td><%=h pagamento.vencimento_to_s %></td>
+    <td nowrap><%=h pagamento.valor_formatado %></td>
     <td><%=h pagamento.confirmado_pt %></td>
     <td nowrap>
     	<%= link_to 'Editar', edit_pagamento_path(pagamento) %> | 

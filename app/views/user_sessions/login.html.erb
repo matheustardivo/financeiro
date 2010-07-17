@@ -3,11 +3,11 @@ Financeiro &gt; Login
 <% form_for @user_session, :url => { :action => 'create' } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :username, "Usuário:" %><br />
+    <%= f.label :username, "Usuário:" %>
     <%= f.text_field :username %>
   </p>
   <p>
-    <%= f.label :password, "Senha:" %><br />
+    <%= f.label :password, "Senha:" %>
     <%= f.password_field :password %>
   </p>
   <p><%= f.submit 'Entrar' %> ou <%= link_to 'Cadastrar novo usuário', new_user_path %></p>
