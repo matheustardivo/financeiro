@@ -12,7 +12,7 @@
 <% @cartaos.each do |cartao| %>
   <tr>
     <td><%=h cartao.descricao %></td>
-	<td><%=h cartao.fatura_atual(cartao.id).mes %></td>
+	<td><%=h cartao.fatura_atual(cartao.id).mes_formatado %></td>
 	<td><%=h cartao.fatura_atual(cartao.id).saldo_formatado %></td>
     <td nowrap>
 	<%= link_to 'Fatura atual', cartao.fatura_atual(cartao.id) %> | 

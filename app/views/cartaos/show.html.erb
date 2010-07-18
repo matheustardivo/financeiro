@@ -15,7 +15,7 @@
 
 <% @cartao.faturas.each do |fatura| %>
   <tr>
-    <td><%=h fatura.mes %></td>
+    <td><%=h fatura.mes_formatado %></td>
     <td><%=h fatura.saldo_formatado %></td>
     <td nowrap><%=h fatura.situacao %></td>
     <td nowrap>

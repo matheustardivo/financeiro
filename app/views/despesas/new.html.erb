@@ -4,7 +4,7 @@
 <%= link_to "Detalhe da fatura", @despesa.fatura %> &gt; Inserir despesa
 
 <p>Cartão de crédito: <%= @despesa.fatura.cartao.descricao %></p>
-<p>Mês: <%= @despesa.fatura.mes %></p>
+<p>Mês: <%= @despesa.fatura.mes_formatado %></p>
 
 <% form_for(@despesa) do |f| %>
   <%= f.error_messages %>
