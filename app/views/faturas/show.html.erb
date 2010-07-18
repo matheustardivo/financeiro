@@ -8,7 +8,7 @@
 
 <p>
   <b>Mês:</b>
-  <%=h @fatura.mes %>
+  <%=h @fatura.mes_formatado %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 </p>
 
 <% if @fatura.situacao == 'Aberta' %>
-<%= button_to "Fechar fatura", :action => "fechar" %>
+<%= button_to "Fechar fatura", { :action => 'fechar', :id => @fatura.id }, :confirm => 'Confirma fechar a fatura atual?' %>
 <% end %>
 
 <table>
@@ -32,7 +32,9 @@
     <th>Prazo/Vista</th>
     <th>Descrição</th>
     <th>Valor</th>
+	<% unless @fatura.situacao == 'Fechada' %>
     <th>Ações</th>
+	<% end %>
   </tr>
 
 <% @fatura.despesas.each do |despesa| %>
@@ -48,10 +50,12 @@
     </td>
     <td><%=h despesa.descricao %></td>
     <td nowrap><%= despesa.valor_formatado %></td>
+	<% unless @fatura.situacao == 'Fechada' %>
     <td nowrap>
 	<%= link_to 'Editar', edit_despesa_path(despesa) %> | 
 	<%= link_to 'Remover', despesa, :confirm => 'Confirma remover a despesa?', :method => :delete %>
 	</td>
+	<% end %>
     <td></td>
   </tr>
 <% end %>
