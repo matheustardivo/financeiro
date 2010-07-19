@@ -1,13 +1,16 @@
 <%= link_to "Dashboard", root_url %> &gt; Contas
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Descrição</th>
-    <th>Saldo</th>
-    <th>Ações</th>
-  </tr>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th>Saldo</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
 
+  <tbody>
 <% @contas.each do |conta| %>
   <tr>
     <td><%=h conta.nome %></td>
@@ -18,10 +21,9 @@
 		<%= link_to 'Editar', edit_conta_path(conta) %> | 
 		<%= link_to 'Remover', conta, :confirm => 'Confirma remover a conta?', :method => :delete %>
     </td>
-    <td></td>
-    <td></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <br />

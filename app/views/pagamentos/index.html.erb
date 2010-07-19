@@ -1,15 +1,18 @@
 <%= link_to "Dashboard", root_url %> &gt; Pagamentos
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Descrição</th>
-    <th><%= link_to 'Vencimento', pagamentos_path({ :ordenar => 'vencimento' }) %></th>
-    <th>Valor</th>
-    <th><%= link_to 'Confirmado?', pagamentos_path({ :ordenar => 'confirmado' }) %></th>
-    <th>Ações</th>
-  </tr>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th><%= link_to 'Vencimento', pagamentos_path({ :ordenar => 'vencimento' }) %></th>
+	    <th>Valor</th>
+	    <th><%= link_to 'Confirmado?', pagamentos_path({ :ordenar => 'confirmado' }) %></th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
 
+  <tbody>
 <% @pagamentos.each do |pagamento| %>
   <tr>
     <td><%=h pagamento.nome %></td>
@@ -23,6 +26,7 @@
     </td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <%

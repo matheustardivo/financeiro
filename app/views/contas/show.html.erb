@@ -15,15 +15,18 @@
   <%=h @conta.saldo_formatado %>
 </p>
 
-<table>
-  <tr>
-    <th>Tipo</th>
-    <th>Dia</th>
-    <th>Descrição</th>
-    <th>Valor</th>
-    <th>Ações</th>
-  </tr>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Tipo</th>
+	    <th>Dia</th>
+	    <th>Descrição</th>
+	    <th>Valor</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
 
+  <tbody>
 <% @conta.movimentos.each do |movimento| %>
   <tr>
     <td><%=h movimento.tipo.nome %></td>
@@ -36,6 +39,7 @@
     </td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <p><%= link_to 'Adicionar movimento', new_movimento_path({ :conta_id => @conta.id }) %></p>
