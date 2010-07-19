@@ -38,41 +38,43 @@ class DespesasController < ApplicationController
       flash[:notice] = 'Despesa cadastrada com sucesso.'
       
     else
-      # Parcelamento
-      valor_parcelas = @despesa.valor / @despesa.parcelas
-      mes_fatura_atual = @despesa.fatura.mes
+      Despesa.transaction do
+        # Parcelamento
+        valor_parcelas = @despesa.valor / @despesa.parcelas
+        mes_fatura_atual = @despesa.fatura.mes
       
-      Range.new(1, @despesa.parcelas).each do |parcela|
-        despesa = Despesa.new
-        despesa.data = @despesa.data
-        despesa.tipo = @despesa.tipo
-        despesa.parcelas = @despesa.parcelas
-        despesa.descricao = "#{@despesa.descricao} - P.#{parcela}/#{@despesa.parcelas}"
-        despesa.valor = valor_parcelas
+        Range.new(1, @despesa.parcelas).each do |parcela|
+          despesa = Despesa.new
+          despesa.data = @despesa.data
+          despesa.tipo = @despesa.tipo
+          despesa.parcelas = @despesa.parcelas
+          despesa.descricao = "#{@despesa.descricao} - P.#{parcela}/#{@despesa.parcelas}"
+          despesa.valor = valor_parcelas
         
-        despesa.fatura = @despesa.fatura
-        despesa.save
+          despesa.fatura = @despesa.fatura
+          despesa.save!
         
-        if parcela < @despesa.parcelas
-          @despesa.data = @despesa.data >> 1
-          mes_fatura_atual = mes_fatura_atual >> 1
+          if parcela < @despesa.parcelas
+            @despesa.data = @despesa.data >> 1
+            mes_fatura_atual = mes_fatura_atual >> 1
 
-          @despesa.fatura = Fatura.find_by_cartao_id_and_mes(
-            @despesa.fatura.cartao.id, mes_fatura_atual)
+            @despesa.fatura = Fatura.find_by_cartao_id_and_mes(
+              @despesa.fatura.cartao.id, mes_fatura_atual)
 
-          if @despesa.fatura == nil
-            fatura = Fatura.new
-            fatura.cartao = fatura_original.cartao
-            fatura.mes = Date.new(mes_fatura_atual.year, mes_fatura_atual.month)
-            fatura.situacao = "Prevista"
-            fatura.save
+            if @despesa.fatura == nil
+              fatura = Fatura.new
+              fatura.cartao = fatura_original.cartao
+              fatura.mes = Date.new(mes_fatura_atual.year, mes_fatura_atual.month)
+              fatura.situacao = "Prevista"
+              fatura.save!
 
-            @despesa.fatura = fatura
+              @despesa.fatura = fatura
+            end
           end
         end
-      end
       
-      flash[:notice] = 'Despesa parcelada cadastrada com sucesso.'
+        flash[:notice] = 'Despesa parcelada cadastrada com sucesso.'
+      end
     end
     
     respond_to do |format|
