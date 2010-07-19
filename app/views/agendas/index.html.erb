@@ -1,15 +1,18 @@
 <%= link_to "Dashboard", root_url %> &gt; Agendas
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Mês</th>
-    <th>Confirmado</th>
-    <th>Valor confirmado</th>
-    <th>Valor pendente</th>
-    <th>Ações</th>
-  </tr>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Mês</th>
+	    <th>Confirmado</th>
+	    <th>Valor confirmado</th>
+	    <th>Valor pendente</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
 
+  <tbody>
 <% @agendas.each do |agenda| %>
   <tr>
     <td><%=h agenda.nome %></td>
@@ -24,6 +27,7 @@
     </td>
   </tr>
 <% end %>
+  <tbody>
 </table>
 
 <br />

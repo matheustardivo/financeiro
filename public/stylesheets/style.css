@@ -38,7 +38,10 @@ blockquote{background: #f7f7f7; padding: 10px 15px;margin: 0 0 1em 2.5em;font-si
 
 #wrapper {width: 940px;margin: 0px auto;position: relative;}
 
-#container{background:#fff;}
+#container {
+	background:#fff;
+	border: 1px solid #ccc;
+}
 
 #header {height: 52px;} /* Height of the header */
 
@@ -480,7 +483,7 @@ img.avatar {
 	margin-top: 15px;
 	margin-right: 5px;
 	float:right;
-	width: 140px;
+	width: 138px;
 	color: #666666;
 	line-height: 160%;
 }

@@ -1,0 +1,33 @@
+body {
+	line-height: 1.6em;
+}
+
+#newspaper-b {
+	margin: 0px;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+}
+
+#newspaper-b th {
+	padding: 10px 6px 6px 6px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #000;
+}
+
+#newspaper-b tbody { background: #F5F6F7; }
+
+#newspaper-b td {
+	padding: 6px;
+	color: #000;
+	border-right: 1px dashed #ccc;
+	border-left: 1px dashed #ccc;
+	border-top: 1px solid #ccc;
+}
+
+#newspaper-b tbody tr:hover td {
+	color: #000;
+	background: #d0dafd;
+}

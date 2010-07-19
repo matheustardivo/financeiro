@@ -1,12 +1,15 @@
 <%= link_to "Dashboard", root_url %> &gt; Cartões de crédito
 
-<table>
-  <tr>
-    <th>Descrição</th>
-    <th>Mês fatura atual</th>
-    <th>Valor atual</th>
-    <th>Ações</th>
-  </tr>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Descrição</th>
+	    <th>Mês fatura atual</th>
+	    <th>Valor atual</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
+  <tbody>
 
 <% valor_total = 0 %>
 <% @cartaos.each do |cartao| %>
@@ -23,6 +26,7 @@
   </tr>
 <% valor_total += cartao.fatura_atual(cartao.id).saldo %>
 <% end %>
+  </tbody>
 </table>
 
 <p><b>Valor total atual:</b> <%=h Dinheiro.new(valor_total).real_formatado %></p>

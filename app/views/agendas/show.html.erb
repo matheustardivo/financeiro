@@ -10,16 +10,19 @@
   <%=h @agenda.mes %>
 </p>
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Descrição</th>
-    <th>Vencimento</th>
-    <th>Valor</th>
-    <th>Confirmado?</th>
-    <th>Ações</th>
-  </tr>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th>Vencimento</th>
+	    <th>Valor</th>
+	    <th>Confirmado?</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
 
+  <tbody>
 <% @agenda.pagamentos.each do |pagamento| %>
   <tr>
     <td><%=h pagamento.nome %></td>
@@ -33,6 +36,7 @@
     </td>
   </tr>
 <% end %>
+  <tbody>
 </table>
 
 <p><b>Valor Confirmado:</b> <%=h @agenda.valor_confirmado %></p>
