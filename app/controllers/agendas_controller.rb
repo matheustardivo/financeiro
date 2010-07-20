@@ -4,7 +4,7 @@ class AgendasController < ApplicationController
   # GET /agendas
   # GET /agendas.xml
   def index
-    @agendas = Agenda.all
+    @agendas = Agenda.all(:conditions => { :user_id => current_user.id })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,6 +43,7 @@ class AgendasController < ApplicationController
   # POST /agendas.xml
   def create
     @agenda = Agenda.new(params[:agenda])
+    @agenda.user = current_user
 
     respond_to do |format|
       if @agenda.save

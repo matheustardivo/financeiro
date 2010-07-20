@@ -16,7 +16,7 @@
 <% @agendas.each do |agenda| %>
   <tr>
     <td><%=h agenda.nome %></td>
-    <td><%=h agenda.mes %></td>
+    <td><%=h agenda.mes_formatado %></td>
     <td><%=h agenda.confirmado %></td>
     <td nowrap><%=h agenda.valor_confirmado %></td>
     <td nowrap><%=h agenda.valor_pendente %></td>

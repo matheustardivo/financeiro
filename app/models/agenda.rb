@@ -29,7 +29,7 @@ class Agenda < ActiveRecord::Base
     return "Sim"
   end
   
-  def mes
+  def mes_formatado
     read_attribute(:mes).strftime("%m/%Y")
   end
 end
