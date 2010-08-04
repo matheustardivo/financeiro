@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login "login", :controller => "user_sessions", :action => "login"
   map.logout "logout", :controller => "user_sessions", :action => "logout"
+
+  map.resources :password_resets
   
   map.resources :cartaos, :has_many => :faturas
   map.resources :faturas
