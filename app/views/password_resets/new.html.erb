@@ -1,0 +1,13 @@
+<%= link_to "Dashboard", root_url %> &gt; Esqueci meu usuário/senha
+
+<p>As instruções para resetar sua senha serão enviadas para o seu email</p>
+
+<% form_tag password_resets_path do %>
+  <p>
+    <%= label_tag "email", "Email:" %>
+    <%= text_field_tag "email", "", :size => 30 %>
+  </p>
+  <p>
+    <%= submit_tag "Resetar minha senha" %>
+  </p>
+<% end %>

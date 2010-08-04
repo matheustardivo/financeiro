@@ -1,0 +1,28 @@
+<%= link_to "Dashboard", root_url %> &gt; Esqueci meu usuário/senha
+<%= error_messages_for 'user' %>
+
+<p>
+  <b>Usuário:</b>
+  <%=h @user.username %>
+</p>
+
+<p>
+  <b>E-mail:</b>
+  <%=h @user.email %>
+</p>
+
+<p>Informar sua nova senha</p>
+
+<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+  <p>
+    <%= f.label :password, "Nova senha:" %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, "Confirmar a nova senha:" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.submit "Atualizar minha senha e entrar no sistema" %>
+  </p>
+<% end %>
