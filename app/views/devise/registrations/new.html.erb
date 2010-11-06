@@ -1,0 +1,18 @@
+Financeiro &gt; Login &gt; Cadastrar novo usuário
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email, "Email:" %>
+  <%= f.text_field :email %></p>
+
+  <p><%= f.label :password, "Senha:" %>
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation, "Confirmar a senha:" %>
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit "Cadastrar" %> ou <%= link_to 'Voltar', root_path %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

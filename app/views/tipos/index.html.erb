@@ -1,0 +1,30 @@
+<%= link_to "Dashboard", root_url %> &gt; Tipos
+
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th>Valor</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+<% @tipos.each do |tipo| %>
+  <tr>
+    <td><%=h tipo.nome %></td>
+    <td><%=h tipo.descricao %></td>
+    <td><%=h tipo.valor %></td>
+    <td nowrap>
+    	<%= link_to 'Editar', edit_tipo_path(tipo) %> | 
+		<%= link_to 'Remover', tipo, :confirm => 'Confirma remover o tipo?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Novo tipo', new_tipo_path %>

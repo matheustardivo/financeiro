@@ -1,0 +1,32 @@
+<%= link_to "Dashboard", root_url %> &gt; 
+<%= link_to "Contas", contas_url %> &gt; 
+<%= link_to "Extrato", @movimento.conta %> &gt; 
+Inserir movimento
+
+<p>Conta: <%= @movimento.conta.nome %></p>
+
+<% form_for(@movimento) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :conta_id, :value => @movimento.conta.id %>
+
+  <p>
+    <%= f.label :tipo_id, "Tipo:" %>
+    <%= collection_select(:movimento, :tipo_id, Tipo.all(:order => "nome", :conditions => { :user_id => current_user.id }), :id, :nome) %>
+  </p>
+  <p>
+    <%= f.label :dia, "Data:" %>
+    <%= f.date_select :dia %>
+  </p>
+  <p>
+    <%= f.label :descricao, "Descrição:" %>
+    <%= f.text_area :descricao %>
+  </p>
+  <p>
+    <%= f.label :valor, "Valor:" %>
+    <%= f.text_field :valor %>
+  </p>
+  <p>
+    <%= f.submit 'Inserir' %> ou <%= link_to 'Voltar', @movimento.conta %>
+  </p>
+<% end %>

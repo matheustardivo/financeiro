@@ -1,0 +1,22 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Tipos", tipos_url %> &gt; Inserir tipo
+
+<% form_for(@tipo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :nome, "Nome:" %>
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :descricao, "Descrição:" %>
+    <%= f.text_area :descricao %>
+  </p>
+  <p>
+    <%= f.label :valor, "Valor:" %>
+	<%= f.radio_button :valor, "C" %>Crédito
+	<%= f.radio_button :valor, "D" %>Débito
+  </p>
+  <p>
+    <%= f.submit 'Inserir' %> ou <%= link_to 'Voltar', tipos_path %>
+  </p>
+<% end %>

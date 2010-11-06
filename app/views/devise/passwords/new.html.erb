@@ -1,0 +1,14 @@
+<%= link_to "Dashboard", root_url %> &gt; Esqueci meu usuário/senha
+
+<p>As instruções para resetar sua senha serão enviadas para o seu email</p>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email, "Email:" %>
+  <%= f.text_field :email %></p>
+
+  <p><%= f.submit "Enviar instruções" %> ou <%= link_to 'Voltar', root_path %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

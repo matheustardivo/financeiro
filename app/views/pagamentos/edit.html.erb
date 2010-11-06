@@ -1,0 +1,33 @@
+<%= link_to "Dashboard", root_url %> &gt; 
+<%= link_to "Agendas", agendas_url %> &gt; 
+<%= link_to "Pagamentos", @pagamento.agenda %> &gt; 
+Editar pagamento
+
+<% form_for(@pagamento) do |f| %>
+  <%= f.error_messages %>
+
+  <%= f.hidden_field :agenda_id, :value => @pagamento.agenda.id %>
+
+  <p>
+    <%= f.label :nome, "Nome:" %>
+    <%= f.text_field :nome %>
+  </p>
+  <p>
+    <%= f.label :descricao, "Descrição:" %>
+    <%= f.text_area :descricao %>
+  </p>
+  <p>
+    <%= f.label :vencimento, "Vencimento:" %>
+    <%= f.date_select :vencimento %>
+  </p>
+  <p>
+    <%= f.label :valor, "Valor:" %>
+    <%= f.text_field :valor %>
+  </p>
+  <p>
+    <%= f.label :confirmado, "Confirmado? " %><%= f.check_box :confirmado %>
+  </p>
+  <p>
+    <%= f.submit 'Editar' %> ou <%= link_to 'Voltar', @pagamento.agenda %>
+  </p>
+<% end %>

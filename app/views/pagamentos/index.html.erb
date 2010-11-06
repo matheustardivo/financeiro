@@ -1,0 +1,47 @@
+<%= link_to "Dashboard", root_url %> &gt; Pagamentos
+
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th><%= link_to 'Vencimento', pagamentos_path({ :ordenar => 'vencimento' }) %></th>
+	    <th>Valor</th>
+	    <th><%= link_to 'Confirmado?', pagamentos_path({ :ordenar => 'confirmado' }) %></th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+<% @pagamentos.each do |pagamento| %>
+  <tr>
+    <td><%=h pagamento.nome %></td>
+    <td><%=h pagamento.descricao %></td>
+    <td><%=h pagamento.vencimento %></td>
+    <td><%=h pagamento.valor %></td>
+    <td><%=h pagamento.confirmado_pt %></td>
+    <td nowrap>
+    	<%= link_to 'Editar', edit_pagamento_path(pagamento) %> | 
+		<%= link_to 'Remover', pagamento, :confirm => 'Confirma remover o pagamento?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%
+	valor_confirmado = 0
+	valor_pendente = 0
+	Pagamento.all(:conditions => { :user_id => current_user.id }).each do |pagamento|
+		if pagamento.confirmado
+			valor_confirmado += pagamento.valor
+		else
+			valor_pendente += pagamento.valor
+		end
+	end
+%>
+
+<p><b>Valor Confirmado:</b> <%=h valor_confirmado %></p>
+<p><b>Valor Pendente:</b> <%=h valor_pendente %></p>
+
+<%= link_to 'Novo pagamento', new_pagamento_path %>

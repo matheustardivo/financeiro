@@ -1,0 +1,45 @@
+<%= link_to "Dashboard", root_url %> &gt; <%= link_to "Agendas", agendas_url %> &gt; Pagamentos
+
+<p>
+  <b>Nome:</b>
+  <%=h @agenda.nome %>
+</p>
+
+<p>
+  <b>Mês:</b>
+  <%=h @agenda.mes_formatado %>
+</p>
+
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th>Vencimento</th>
+	    <th>Valor</th>
+	    <th>Confirmado?</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+<% @agenda.pagamentos.each do |pagamento| %>
+  <tr>
+    <td><%=h pagamento.nome %></td>
+    <td><%=h pagamento.descricao %></td>
+    <td><%=h pagamento.vencimento_to_s %></td>
+    <td nowrap><%=h pagamento.valor_formatado %></td>
+    <td><%=h pagamento.confirmado_pt %></td>
+    <td nowrap>
+    	<%= link_to 'Editar', edit_pagamento_path(pagamento) %> | 
+		<%= link_to 'Remover', pagamento, :confirm => 'Confirma remover o pagamento?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+  <tbody>
+</table>
+
+<p><b>Valor Confirmado:</b> <%=h @agenda.valor_confirmado %></p>
+<p><b>Valor Pendente:</b> <%=h @agenda.valor_pendente %></p>
+
+<p><%= link_to 'Adicionar pagamento', new_pagamento_path({ :agenda_id => @agenda.id }) %></p>

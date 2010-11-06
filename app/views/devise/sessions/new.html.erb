@@ -1,0 +1,36 @@
+Financeiro &gt; Login
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <p>
+	<%= f.label :email, "Email:" %>
+	<%= f.text_field :email %>
+  </p>
+
+  <p>
+	<%= f.label :password, "Senha:" %>
+	<%= f.password_field :password %>
+  </p>
+
+  <% if devise_mapping.rememberable? -%>
+    <p><%= f.check_box :remember_me %> <%= f.label :remember_me, "Lembrar login" %></p>
+  <% end -%>
+
+  <p><%= f.submit "Entrar" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>
+
+<br />
+<h3>Ou entrar usando:</h3>
+<p>
+  <%= image_tag "github_32.png", :size => "32x32", :alt => "Github" %>
+  Github
+  <%= image_tag "twitter_32.png", :size => "32x32", :alt => "Twitter" %>
+  Twitter
+  <%= image_tag "facebook_32.png", :size => "32x32", :alt => "Facebook" %>
+  Facebook
+  <%= image_tag "google_32.png", :size => "32x32", :alt => "Google" %>
+  Google
+  <%= image_tag "openid_32.png", :size => "32x32", :alt => "OpenID" %>
+  OpenID
+</p>

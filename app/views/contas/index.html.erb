@@ -1,0 +1,31 @@
+<%= link_to "Dashboard", root_url %> &gt; Contas
+
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th>Saldo</th>
+	    <th>Ações</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+<% @contas.each do |conta| %>
+  <tr>
+    <td><%=h conta.nome %></td>
+    <td><%=h conta.descricao %></td>
+    <td><%=h conta.saldo_formatado %></td>
+    <td nowrap>
+    	<%= link_to 'Extrato', conta %> | 
+		<%= link_to 'Editar', edit_conta_path(conta) %> | 
+		<%= link_to 'Remover', conta, :confirm => 'Confirma remover a conta?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Nova conta', new_conta_path %>
