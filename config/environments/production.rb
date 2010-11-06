@@ -22,7 +22,15 @@ config.action_view.cache_template_loading            = true
 # config.action_controller.asset_host = "http://assets.example.com"
 
 # Disable delivery errors, bad email addresses will be ignored
-# config.action_mailer.raise_delivery_errors = false
+config.action_mailer.raise_delivery_errors = false
+ActionMailer::Base.smtp_settings = {
+  :address => "mail.tardivo.org",  
+  :domain => "financeiro.tardivo.org",  
+  :user_name => "noreply@tardivo.org",  
+  :password => "miucha@123",  
+  :authentication =>  :login
+}
+
 
 # Enable threaded mode
 # config.threadsafe!

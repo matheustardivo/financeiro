@@ -15,6 +15,63 @@
   <%=h @conta.saldo_formatado %>
 </p>
 
+<p>
+  <b>Resumo mensal</b>
+</p>
+
+<% @meses = @conta.movimentos.group_by { |m| m.dia.beginning_of_month } %>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Mês</th>
+	    <th>Crédito</th>
+	    <th>Débito</th>
+	    <th>Saldo</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+<%
+credito_total = 0
+despesa_total = 0
+saldo_atual = 0
+%>
+<% @meses.sort.each do |mes, movimentos| %>
+<%
+credito_mes = 0
+despesa_mes = 0
+for movimento in movimentos
+	if movimento.tipo.valor == 'C'
+		credito_mes += movimento.valor
+		credito_total += movimento.valor
+	else
+		despesa_mes += movimento.valor
+		despesa_total += movimento.valor
+	end
+end
+
+saldo_atual = (credito_mes - despesa_mes) + saldo_atual
+%>
+	<tr>
+      <td><%=h mes.strftime('%m/%Y') %></td>
+      <td nowrap><%=h Dinheiro.new(credito_mes).real_formatado %></td>
+      <td nowrap><%=h Dinheiro.new(despesa_mes).real_formatado %></td>
+      <td nowrap><%=h Dinheiro.new(saldo_atual).real_formatado %></td>
+    </tr>
+<% end %>
+	<tr>
+	  <td><b>Total</b></td>
+	  <td nowrap><b><%=h Dinheiro.new(credito_total).real_formatado %></b></td>
+	  <td nowrap><b><%=h Dinheiro.new(despesa_total).real_formatado %></b></td>
+	  <td nowrap><b><%=h Dinheiro.new(credito_total - despesa_total).real_formatado %></b></td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+  <b>Movimento geral</b>
+</p>
+
 <table id="newspaper-b">
   <thead>
 	  <tr>

@@ -1,7 +1,7 @@
 class Fatura < ActiveRecord::Base
   
   belongs_to :cartao
-  has_many :despesas
+  has_many :despesas, :order => "data"
   
   def saldo
     total = 0

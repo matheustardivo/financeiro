@@ -15,3 +15,11 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+ActionMailer::Base.smtp_settings = {
+  :address => "mail.tardivo.org",  
+  :domain => "financeiro.tardivo.org",  
+  :user_name => "noreply@tardivo.org",  
+  :password => "miucha@123",  
+  :authentication =>  :login
+}
