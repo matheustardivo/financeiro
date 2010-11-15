@@ -1,16 +1,22 @@
 Financeiro &gt; Login &gt; Cadastrar novo usuário
 
+<% if @user.authentication %>
+  <p>Atenção: para usuários autenticados em outros serviços não será possível alterar o email depois do cadastro.</p>
+<% end %>
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <%= f.error_messages %>
 
   <p><%= f.label :email, "Email:" %>
   <%= f.text_field :email %></p>
 
+<% if @user.password_required? %>
   <p><%= f.label :password, "Senha:" %>
   <%= f.password_field :password %></p>
 
   <p><%= f.label :password_confirmation, "Confirmar a senha:" %>
   <%= f.password_field :password_confirmation %></p>
+<% end %>
 
   <p><%= f.submit "Cadastrar" %> ou <%= link_to 'Voltar', root_path %></p>
 <% end %>
