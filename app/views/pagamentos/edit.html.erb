@@ -17,8 +17,8 @@ Editar pagamento
     <%= f.text_area :descricao %>
   </p>
   <p>
-    <%= f.label :vencimento, "Vencimento:" %>
-    <%= f.date_select :vencimento %>
+    <%= f.label :vencimento_to_s, "Vencimento:" %>
+    <%= f.text_field :vencimento_to_s, :size => 10 %>
   </p>
   <p>
     <%= f.label :valor, "Valor:" %>

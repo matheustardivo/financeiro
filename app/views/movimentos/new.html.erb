@@ -15,8 +15,8 @@ Inserir movimento
     <%= collection_select(:movimento, :tipo_id, Tipo.all(:order => "nome", :conditions => { :user_id => current_user.id }), :id, :nome) %>
   </p>
   <p>
-    <%= f.label :dia, "Data:" %>
-    <%= f.date_select :dia %>
+    <%= f.label :dia_to_s, "Data:" %>
+    <%= f.text_field :dia_to_s, :size => 10 %>
   </p>
   <p>
     <%= f.label :descricao, "Descrição:" %>

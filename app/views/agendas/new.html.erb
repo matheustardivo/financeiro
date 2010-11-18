@@ -8,8 +8,8 @@
     <%= f.text_field :nome %>
   </p>
   <p>
-    <%= f.label :mes, "Mês:" %>
-    <%= f.date_select :mes %>
+    <%= f.label :mes_formatado, "Mês:" %>
+    <%= f.text_field :mes_formatado, :size => 6 %>
   </p>
   <p>
     <%= f.submit 'Inserir' %> ou <%= link_to 'Voltar', agendas_path %>

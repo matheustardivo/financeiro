@@ -27,6 +27,7 @@ class AgendasController < ApplicationController
   # GET /agendas/new.xml
   def new
     @agenda = Agenda.new
+    @agenda.mes = Date.today
 
     respond_to do |format|
       format.html # new.html.erb

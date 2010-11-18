@@ -91,4 +91,8 @@ class ContasController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def dashboard
+    @contas = Conta.all(:conditions => { :user_id => current_user.id })
+  end
 end

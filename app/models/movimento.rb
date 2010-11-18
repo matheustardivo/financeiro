@@ -8,6 +8,10 @@ class Movimento < ActiveRecord::Base
     read_attribute(:dia).to_s_br
   end
   
+  def dia_to_s=(dia_atual)
+    write_attribute(:dia, Date.strptime(dia_atual, "%d/%m/%Y"))
+  end
+  
   def valor_formatado
     Dinheiro.new(read_attribute(:valor)).real_formatado
   end

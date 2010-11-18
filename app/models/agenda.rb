@@ -32,4 +32,8 @@ class Agenda < ActiveRecord::Base
   def mes_formatado
     read_attribute(:mes).strftime("%m/%Y")
   end
+  
+  def mes_formatado=(mes_atual)
+    write_attribute(:mes, Date.strptime(mes_atual, "%m/%Y"))
+  end
 end

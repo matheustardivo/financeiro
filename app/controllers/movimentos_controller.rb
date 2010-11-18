@@ -37,6 +37,7 @@ class MovimentosController < ApplicationController
   
   def new
     @movimento = Movimento.new
+    @movimento.dia = Date.today
     if params[:conta_id] != nil
       @movimento.conta_id = params[:conta_id]
     end

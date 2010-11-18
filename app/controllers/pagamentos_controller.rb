@@ -26,6 +26,7 @@ class PagamentosController < ApplicationController
     
     @pagamento = Pagamento.new
     @pagamento.agenda = Agenda.find(params[:agenda_id])
+    @pagamento.vencimento = Date.today
 
     respond_to do |format|
       format.html # new.html.erb

@@ -79,6 +79,8 @@ class TiposController < ApplicationController
   def destroy
     @tipo = Tipo.find(params[:id])
     @tipo.destroy
+    
+    flash[:notice] = 'Tipo removido com sucesso.'
 
     respond_to do |format|
       format.html { redirect_to(tipos_url) }

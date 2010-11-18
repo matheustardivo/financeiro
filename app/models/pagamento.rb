@@ -17,6 +17,10 @@ class Pagamento < ActiveRecord::Base
     read_attribute(:vencimento).to_s_br
   end
   
+  def vencimento_to_s=(vencimento_atual)
+    write_attribute(:vencimento, Date.strptime(vencimento_atual, "%d/%m/%Y"))
+  end
+  
   def valor_formatado
     Dinheiro.new(read_attribute(:valor)).real_formatado
   end

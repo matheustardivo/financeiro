@@ -16,6 +16,11 @@
 
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+
+  <%= stylesheet_link_tag "jquery-ui.css" %>
+
+  <%= javascript_include_tag "jquery-ui.min.js" %>
+  <%= javascript_include_tag "jquery.maskedinput.min.js" %>
 </head>
 <body>
 	<div style="display:none;">
@@ -55,7 +60,10 @@
 						<div class="dbx-content">
 							<ul>
 								<% if user_signed_in? %>
-									<li><%= link_to 'Dashboard', edit_user_registration_path %></li>
+									<li><%= link_to 'Dashboard', root_path %></li>
+									<% unless current_user.authentication %>
+									<li><%= link_to 'Usuário', edit_user_registration_path %></li>
+									<% end %>
 
 									<li><%= link_to 'Contas', contas_path %></li>
 									<li><%= link_to 'Cartões', cartaos_path %></li>

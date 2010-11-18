@@ -9,6 +9,7 @@ class DespesasController < ApplicationController
     
     @despesa = Despesa.new
     @despesa.fatura = Fatura.find(params[:fatura_id])
+    @despesa.data = Date.today
 
     respond_to do |format|
       format.html # new.html.erb
