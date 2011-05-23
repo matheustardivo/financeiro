@@ -12,6 +12,15 @@
     <%= f.text_field :mes_formatado, :size => 6 %>
   </p>
   <p>
+    <%= f.label :template_agenda_id, "Template:" %>
+	<%= collection_select(:template, :agenda_id, Agenda.all(:order => "id desc", :conditions => { :user_id => current_user.id }), :id, :nome, :prompt => "Nenhum") %>
+  </p>
+  <div id="pagamentos" style="display: none">
+  	<% Agenda.find(10).pagamentos.each do |p| %>
+		<%= check_box_tag 'pagamento', p.id %> <%= p.nome %><br />
+	<% end %>
+  </div>
+  <p>
     <%= f.submit 'Inserir' %> ou <%= link_to 'Voltar', agendas_path %>
   </p>
 <% end %>
