@@ -26,4 +26,12 @@ $(function() {
   $("#pagamento_vencimento_to_s").mask('99/99/9999');
   $("#movimento_dia_to_s").mask('99/99/9999');
   $("#agenda_mes_formatado").mask('99/9999');
+
+  $('#template_agenda_id').change(function() {
+	if ($(this).val() != '') {
+		$('#pagamentos').show('slow');
+	} else {
+		$('#pagamentos').hide('slow');
+	}
+  });
 });
