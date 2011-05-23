@@ -45,6 +45,22 @@ class AgendasController < ApplicationController
   def create
     @agenda = Agenda.new(params[:agenda])
     @agenda.user = current_user
+    
+    unless params[:template][:agenda_id].empty?
+      agenda_template = Agenda.find(params[:template][:agenda_id])
+      agenda_template.pagamentos.each do |p|
+        # Copiar nome, descrição, vencimento, valor e user
+        # Mudar o mês e ano de vencimento para o mês/ano da agenda
+        novo_pagamento = Pagamento.new(
+          :nome => p.nome, 
+          :descricao => p.descricao, 
+          :vencimento => Date.new(@agenda.mes.year, @agenda.mes.month, p.vencimento.day), 
+          :valor => p.valor, 
+          :user => p.user)
+        
+        @agenda.pagamentos << novo_pagamento
+      end
+    end
 
     respond_to do |format|
       if @agenda.save
