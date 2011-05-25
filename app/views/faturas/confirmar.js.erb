@@ -1,0 +1,9 @@
+$("#fatura_<%= escape_javascript( @fatura.id.to_s ) %>").html(
+	"<%= escape_javascript( fatura_tag(@fatura) ) %>");
+	
+$("#valor_confirmado").html("<%= escape_javascript( @fatura.agenda.valor_confirmado ) %>");
+$("#valor_pendente").html("<%= escape_javascript( @fatura.agenda.valor_pendente ) %>");
+
+$("#fatura_<%= escape_javascript( @fatura.id.to_s ) %>").effect("highlight", {}, 3000);
+$("#valor_confirmado").effect("highlight", {}, 3000);
+$("#valor_pendente").effect("highlight", {}, 3000);
