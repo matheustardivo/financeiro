@@ -1,10 +1,8 @@
 class AgendasController < ApplicationController
   before_filter :authenticate_user!
   
-  # GET /agendas
-  # GET /agendas.xml
   def index
-    @agendas = Agenda.all(:conditions => { :user_id => current_user.id })
+    @agendas = Agenda.all(:order => 'mes desc', :conditions => { :user_id => current_user.id })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,19 +10,20 @@ class AgendasController < ApplicationController
     end
   end
 
-  # GET /agendas/1
-  # GET /agendas/1.xml
   def show
     @agenda = Agenda.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @agenda }
     end
   end
+  
+  def template
+    @agenda = Agenda.find(params[:agenda_id])
+    render @agenda
+  end
 
-  # GET /agendas/new
-  # GET /agendas/new.xml
   def new
     @agenda = Agenda.new
     @agenda.mes = Date.today
@@ -35,33 +34,28 @@ class AgendasController < ApplicationController
     end
   end
 
-  # GET /agendas/1/edit
   def edit
     @agenda = Agenda.find(params[:id])
   end
 
-  # POST /agendas
-  # POST /agendas.xml
   def create
     @agenda = Agenda.new(params[:agenda])
     @agenda.user = current_user
     
-    unless params[:template][:agenda_id].empty?
-      agenda_template = Agenda.find(params[:template][:agenda_id])
-      agenda_template.pagamentos.each do |p|
-        # Copiar nome, descrição, vencimento, valor e user
-        # Mudar o mês e ano de vencimento para o mês/ano da agenda
+    unless params[:pagamento].empty?
+      params[:pagamento].each do |pagamento|
+        p = Pagamento.find(pagamento)
         novo_pagamento = Pagamento.new(
           :nome => p.nome, 
           :descricao => p.descricao, 
           :vencimento => Date.new(@agenda.mes.year, @agenda.mes.month, p.vencimento.day), 
           :valor => p.valor, 
           :user => p.user)
-        
+
         @agenda.pagamentos << novo_pagamento
       end
     end
-
+    
     respond_to do |format|
       if @agenda.save
         flash[:notice] = 'Agenda cadastrada com sucesso.';
@@ -74,8 +68,6 @@ class AgendasController < ApplicationController
     end
   end
 
-  # PUT /agendas/1
-  # PUT /agendas/1.xml
   def update
     @agenda = Agenda.find(params[:id])
 
@@ -91,8 +83,6 @@ class AgendasController < ApplicationController
     end
   end
 
-  # DELETE /agendas/1
-  # DELETE /agendas/1.xml
   def destroy
     @agenda = Agenda.find(params[:id])
     
