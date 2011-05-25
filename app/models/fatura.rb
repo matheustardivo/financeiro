@@ -1,5 +1,7 @@
 class Fatura < ActiveRecord::Base
   
+  SITUACAO = { :fechada => 'Fechada', :aberta => 'Aberta', :prevista => 'Prevista'}
+  
   belongs_to :cartao
   has_many :despesas, :order => "data"
   
@@ -30,5 +32,13 @@ class Fatura < ActiveRecord::Base
     end
     
     return proxima_fatura
+  end
+  
+  def vencimento
+    Date.new(mes.year, mes.month, cartao.vencimento)
+  end
+  
+  def agenda
+    Agenda.find_by_mes(self.mes)
   end
 end
