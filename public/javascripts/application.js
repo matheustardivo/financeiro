@@ -37,6 +37,7 @@ $(function() {
 			data: 'agenda_id=' + this.value,
 			success: function(data) {
 				$("#pagamentos").html(data).show('slow');
+				$("#pagamentos").effect("pulsate", { times:1 }, 300);
 			}
 		});
 	});
