@@ -29,4 +29,24 @@ class FaturasController < ApplicationController
     flash[:notice] = 'Fatura atual fechada com sucesso.'
     redirect_to(@fatura)
   end
+  
+  def confirmar
+    @fatura = Fatura.find(params[:id])
+    @fatura.confirmado = true
+    @fatura.save
+    
+    respond_to do |format|
+      format.js { render "confirmar" }
+    end
+  end
+  
+  def cancelar
+    @fatura = Fatura.find(params[:id])
+    @fatura.confirmado = false
+    @fatura.save
+    
+    respond_to do |format|
+      format.js { render "confirmar" }
+    end
+  end
 end
