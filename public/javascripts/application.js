@@ -36,8 +36,12 @@ $(function() {
 			url: '/agendas/template', 
 			data: 'agenda_id=' + this.value,
 			success: function(data) {
-				$("#pagamentos").html(data).show('slow');
-				$("#pagamentos").effect("pulsate", { times:1 }, 300);
+				$("#pagamentos").html(data);
+				if ($("#pagamentos").css('display') == 'none') {
+					$("#pagamentos").show('slow');
+				} else {
+					$("#pagamentos").effect("pulsate", { times:1 }, 300);
+				}
 			}
 		});
 	});
