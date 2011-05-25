@@ -5,10 +5,16 @@
   <%=h @cartao.descricao %>
 </p>
 
+<p>
+  <b>Dia de vencimento:</b>
+  <%=h @cartao.vencimento %>
+</p>
+
 <table id="newspaper-b">
   <thead>
 	  <tr>
 	    <th>Mês</th>
+	    <th>Vencimento</th>
 	    <th>Valor</th>
 	    <th>Situação</th>
 	    <th>Ações</th>
@@ -19,6 +25,7 @@
 <% @cartao.faturas.each do |fatura| %>
   <tr>
     <td><%=h fatura.mes_formatado %></td>
+    <td><%=h fatura.vencimento.to_s_br %></td>
     <td><%=h fatura.saldo_formatado %></td>
     <td nowrap><%=h fatura.situacao %></td>
     <td nowrap>
