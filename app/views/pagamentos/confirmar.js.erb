@@ -1,0 +1,9 @@
+$("#pagamento_<%= escape_javascript( @pagamento.id.to_s ) %>").html(
+	"<%= escape_javascript( pagamento_tag(@pagamento) ) %>");
+	
+$("#valor_confirmado").html("<%= escape_javascript( @pagamento.agenda.valor_confirmado ) %>");
+$("#valor_pendente").html("<%= escape_javascript( @pagamento.agenda.valor_pendente ) %>");
+
+$("#pagamento_<%= escape_javascript( @pagamento.id.to_s ) %>").effect("highlight", {}, 3000);
+$("#valor_confirmado").effect("highlight", {}, 3000);
+$("#valor_pendente").effect("highlight", {}, 3000);
