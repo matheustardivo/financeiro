@@ -29,17 +29,53 @@
     <td><%=h pagamento.descricao %></td>
     <td><%=h pagamento.vencimento_to_s %></td>
     <td nowrap><%=h pagamento.valor_formatado %></td>
-    <td><%=h pagamento.confirmado_pt %></td>
+	<%= content_tag_for(:td, pagamento) do %>
+		<%= pagamento_tag(pagamento) %>
+	<% end %>
     <td nowrap>
     	<%= link_to 'Editar', edit_pagamento_path(pagamento) %> | 
 		<%= link_to 'Remover', pagamento, :confirm => 'Confirma remover o pagamento?', :method => :delete %>
     </td>
   </tr>
 <% end %>
-  <tbody>
+  </tbody>
 </table>
 
-<p><b>Valor Confirmado:</b> <%=h @agenda.valor_confirmado %></p>
-<p><b>Valor Pendente:</b> <%=h @agenda.valor_pendente %></p>
+<% if @agenda.faturas.empty? %>
+<p>Não foram encontradas faturas para o mês atual.</p>
+<% else %>
+<p><b>Faturas do mês:</b></p>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th>Cartão</th>
+	    <th>Situação</th>
+	    <th>Vencimento</th>
+	    <th>Valor</th>
+	    <th>Confirmado?</th>
+	    <th>Ação</th>
+	  </tr>
+  </thead>
+  <tbody>
+<% @agenda.faturas.each do |fatura| %>
+  <tr>
+    <td><%= fatura.cartao.descricao %></td>
+    <td nowrap><%= fatura.situacao %></td>
+    <td><%= fatura.vencimento.to_s_br %></td>
+    <td><%= fatura.saldo_formatado %></td>
+	<%= content_tag_for(:td, fatura) do %>
+		<%= fatura_tag(fatura) %>
+	<% end %>
+    <td nowrap>
+	<%= link_to 'Detalhe', fatura %>
+	</td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% end %>
+
+<p><b>Valor Confirmado:</b> <span id="valor_confirmado"><%=h @agenda.valor_confirmado %></span></p>
+<p><b>Valor Pendente:</b> <span id="valor_pendente"><%=h @agenda.valor_pendente %></span></p>
 
 <p><%= link_to 'Adicionar pagamento', new_pagamento_path({ :agenda_id => @agenda.id }) %></p>
