@@ -4,6 +4,7 @@
   <thead>
 	  <tr>
 	    <th>Descrição</th>
+	    <th>Dia de vencimento</th>
 	    <th>Mês fatura atual</th>
 	    <th>Valor atual</th>
 	    <th>Ações</th>
@@ -15,8 +16,9 @@
 <% @cartaos.each do |cartao| %>
   <tr>
     <td><%=h cartao.descricao %></td>
+	<td align="center"><%= cartao.vencimento %></td>
 	<td><%=h cartao.fatura_atual(cartao.id).mes_formatado %></td>
-	<td><%=h cartao.fatura_atual(cartao.id).saldo_formatado %></td>
+	<td nowrap><%=h cartao.fatura_atual(cartao.id).saldo_formatado %></td>
     <td nowrap>
 	<%= link_to 'Fatura atual', cartao.fatura_atual(cartao.id) %> | 
 	<%= link_to 'Faturas', cartao %> | 
