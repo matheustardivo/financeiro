@@ -1,0 +1,21 @@
+<% if agenda.pagamentos.empty? %>
+  <p>O template selecionado não possui pagamentos associados.</p>
+<% else %>
+<table id="newspaper-b">
+  <thead>
+	  <tr>
+	    <th align="center">Incluir?</th>
+	    <th>Nome</th>
+	    <th>Descrição</th>
+	    <th>Vencimento</th>
+	    <th>Valor</th>
+	  </tr>
+  </thead>
+
+  <tbody>
+<% agenda.pagamentos.each do |pagamento| %>
+  <%= render pagamento %>
+<% end %>
+  </tbody>
+</table>
+<% end %>
