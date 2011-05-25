@@ -8,6 +8,9 @@
     <%= f.text_field :descricao %>
   </p>
   <p>
+    Dia de vencimento: <%= select(:cartao, :vencimento, (1..30).to_a) %>
+  </p>
+  <p>
     <%= f.submit 'Inserir' %> ou <%= link_to 'Voltar', cartaos_path %>
   </p>
 <% end %>
