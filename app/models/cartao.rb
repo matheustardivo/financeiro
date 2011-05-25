@@ -1,5 +1,5 @@
 class Cartao < ActiveRecord::Base
-  validates_presence_of :user_id, :descricao
+  validates_presence_of :user_id, :descricao, :vencimento
   
   belongs_to :user
   has_many :faturas
