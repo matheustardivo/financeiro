@@ -1,0 +1,7 @@
+<tr>
+  <td align="center"><%= check_box_tag 'pagamento[]', pagamento.id, true %></td>
+  <td><%=h pagamento.nome %></td>
+  <td><%=h pagamento.descricao %></td>
+  <td><%=h pagamento.vencimento_to_s %></td>
+  <td nowrap><%=h pagamento.valor_formatado %></td>
+</tr>
