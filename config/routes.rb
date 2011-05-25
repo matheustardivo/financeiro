@@ -6,11 +6,23 @@ Financeiro::Application.routes.draw do
 
   match '/movimentos/:id/listar' => 'movimentos#listar'
   
-  resources :agendas
+  resources :agendas do
+    collection do
+      get 'template'
+      put 'confirmar'
+    end
+  end
+  
   resources :despesas
   resources :cartaos, :has_many => :faturas
   resources :faturas
-  resources :pagamentos
+  
+  resources :pagamentos do
+    collection do
+      put 'confirmar'
+    end
+  end
+  
   resources :contas, :has_many => :movimentos
   resources :tipos
   resources :movimentos
