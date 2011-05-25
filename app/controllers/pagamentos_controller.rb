@@ -1,8 +1,6 @@
 class PagamentosController < ApplicationController
   before_filter :authenticate_user!
   
-  # GET /pagamentos
-  # GET /pagamentos.xml
   def index
     if params[:ordenar] == 'confirmado'
       @pagamentos = Pagamento.all(:order => "confirmado DESC", :conditions => { :user_id => current_user.id })
@@ -16,8 +14,6 @@ class PagamentosController < ApplicationController
     end
   end
 
-  # GET /pagamentos/new
-  # GET /pagamentos/new.xml
   def new
     if params[:agenda_id] == nil
       flash[:notice] = 'Agenda não encontrada.'
@@ -34,13 +30,10 @@ class PagamentosController < ApplicationController
     end
   end
 
-  # GET /pagamentos/1/edit
   def edit
     @pagamento = Pagamento.find(params[:id])
   end
 
-  # POST /pagamentos
-  # POST /pagamentos.xml
   def create
     @pagamento = Pagamento.new(params[:pagamento])
     @pagamento.user = current_user
@@ -57,8 +50,6 @@ class PagamentosController < ApplicationController
     end
   end
 
-  # PUT /pagamentos/1
-  # PUT /pagamentos/1.xml
   def update
     @pagamento = Pagamento.find(params[:id])
 
@@ -74,8 +65,6 @@ class PagamentosController < ApplicationController
     end
   end
 
-  # DELETE /pagamentos/1
-  # DELETE /pagamentos/1.xml
   def destroy
     @pagamento = Pagamento.find(params[:id])
     
@@ -87,6 +76,26 @@ class PagamentosController < ApplicationController
       flash[:notice] = 'Pagamento removido com sucesso.'
       format.html { redirect_to(agenda_atual) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def confirmar
+    @pagamento = Pagamento.find(params[:id])
+    @pagamento.confirmado = true
+    @pagamento.save
+    
+    respond_to do |format|
+      format.js { render "confirmar" }
+    end
+  end
+  
+  def cancelar
+    @pagamento = Pagamento.find(params[:id])
+    @pagamento.confirmado = false
+    @pagamento.save
+    
+    respond_to do |format|
+      format.js { render "confirmar" }
     end
   end
 end
