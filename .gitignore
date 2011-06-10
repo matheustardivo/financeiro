@@ -5,3 +5,4 @@ tmp/**/*
 config/environments/*.rb
 config/environments/production.rb
 config/environments/development.rb
+config/database.yml

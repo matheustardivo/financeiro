@@ -1,0 +1,8 @@
+production:
+    adapter: mysql2
+    encoding: utf8
+    database: <%= Capistrano::CLI.ui.ask("Enter MySQL database name: ") %>
+    username: <%= Capistrano::CLI.ui.ask("Enter MySQL database username: ") %>
+    password: <%= Capistrano::CLI.ui.ask("Enter MySQL database password: ") %>
+    host: <%= Capistrano::CLI.ui.ask("Enter MySQL database host: ") %>
+    port: <%= Capistrano::CLI.ui.ask("Enter MySQL database port: ") %>
